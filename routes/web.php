@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\web\managers\auths\ManagerRegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/manager/signup',[ManagerRegisterController::class, 'index'])->name('manager_signup');
+Route::post('/manager/signup-success',[ManagerRegisterController::class, 'store'])->name('manager_signup_success');
+Route::get('/identification={token}', [ManagerRegisterController::class, 'validateToken'])->name('validate_token');

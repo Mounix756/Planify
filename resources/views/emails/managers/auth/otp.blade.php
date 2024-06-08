@@ -1,3 +1,5 @@
+{{-- LE FICHIER HTML QUI SERA ENVOYER A L'UTILISATEUR --}}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -75,14 +77,14 @@
 <body>
     <div class="outer-container">
         <div class="inner-container">
-            <h1>Félicitations pour votre compte Mounix School !</h1>
+            <h1>Félicitations pour votre compte Planify !</h1>
             <p>Bonjour {{ $get_user_name }},</p>
             <p>Pour activer votre compte, veuillez cliquer sur le bouton ci-dessous :</p>
             <a href="{{ $verificationUrl }}" class="button">Vérifier mon compte</a>
             <p>Le lien ne sera valide que pendant 05 minutes.</p>
             <p>Si vous n'avez pas demandé de code, vous pouvez ignorer cet e-mail.</p>
-            <p class="footer">Cordialement,<br> MOUNIX SCHOOL.</p>
-            <p>Email: <a href="mailto:contact@cityalert.com">contact@mounixschool.com</a></p>
+            <p class="footer">Cordialement,<br> Planify.</p>
+            <p>Email: <a href="mailto:contact@planify.com">contact@planify.com</a></p>
             <p>Téléphone: +228 70 49 94 33</p>
         </div>
     </div>

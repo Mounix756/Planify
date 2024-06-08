@@ -5,7 +5,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     @include('managers.include.meta')
-    <title>LA VENDEUSE || {{$title}}</title>
+    <title>PLANIFY || {{$title}}</title>
 
     @include('managers.include.meta')
 

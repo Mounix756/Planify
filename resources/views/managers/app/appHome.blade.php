@@ -9,7 +9,7 @@
     @include('managers.include.meta')
 
     {{-- Donner la possibilité à chaque classe fille d'avoir son propre titre --}}
-    <title>SCHOOL || @yield('title')</title>
+    <title>PLANIFY || @yield('title')</title>
 
 
     {{-- Inclure le fichier contenant les liens css --}}

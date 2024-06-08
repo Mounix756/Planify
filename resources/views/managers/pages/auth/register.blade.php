@@ -13,17 +13,17 @@ Signup
 @section('content')
 <main class="main" id="top">
     <div class="container-fluid bg-body-tertiary dark__bg-gray-1200">
-      <div class="bg-holder bg-auth-card-overlay" style="background-image:url(/teachers/assets/img/bg/37.png);"></div>
+      <div class="bg-holder bg-auth-card-overlay" style="background-image:url(/managers/assets/img/bg/37.png);"></div>
       <div class="row flex-center position-relative min-vh-100 g-0 py-5">
         <div class="col-11 col-sm-10 col-xl-8">
           <div class="card border border-translucent auth-card">
             <div class="card-body pe-md-0">
               <div class="row align-items-center gx-0 gy-7">
                 <div class="col-auto bg-body-highlight dark__bg-gray-1100 rounded-3 position-relative overflow-hidden auth-title-box">
-                  <div class="bg-holder" style="background-image:url(/teachers/assets/img/bg/38.png);"></div>
+                  <div class="bg-holder" style="background-image:url(/managers/assets/img/bg/38.png);"></div>
                   <div class="position-relative px-4 px-lg-7 pt-7 pb-7 pb-sm-5 text-center text-md-start pb-lg-7 card-sign-up">
-                    <h3 class="mb-3 text-body-emphasis fs-7">Bienvenue à Mounix School!</h3>
-                    {{-- <p class="text-body-tertiary">Give yourself some hassle-free development process with the uniqueness of Phoenix!</p> --}}
+                    <h3 class="mb-3 text-body-emphasis fs-7">Planify</h3>
+                    <p class="text-body-tertiary">Votre application de suivi et de planification de projet !</p>
                     {{-- <ul class="list-unstyled mb-0 w-max-content w-md-auto">
                       <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-body-tertiary fw-semibold">Fast</span></li>
                       <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-body-tertiary fw-semibold">Simple</span></li>
@@ -31,12 +31,12 @@ Signup
                     </ul> --}}
                   </div>
                   <div class="position-relative z-n1 mb-6 d-none d-md-block text-center mt-md-15">
-                    <img class="auth-title-box-img d-dark-none" src="{{asset('/teachers/assets/img/spot-illustrations/auth.png')}}" alt="" /><img class="auth-title-box-img d-light-none" src="{{asset('/teachers/assets/img/spot-illustrations/auth-dark.png')}}" alt="" /></div>
+                    <img class="auth-title-box-img d-dark-none" src="{{asset('/managers/assets/img/spot-illustrations/auth.png')}}" alt="" /><img class="auth-title-box-img d-light-none" src="{{asset('/managers/assets/img/spot-illustrations/auth-dark.png')}}" alt="" /></div>
                 </div>
                 <div class="col mx-auto">
                   <div class="auth-form-box">
                     <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="#">
-                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{{asset('/logo/logo1.jpg')}}" alt="phoenix" width="58" /></div>
+                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{{asset('/logo/planify1.jpeg')}}" alt="phoenix" width="58" /></div>
                       </a>
                       <h3 class="text-body-highlight">Inscription</h3>
                       <p class="text-body-tertiary">Veillez remplir tous ces champs !</p>
@@ -46,7 +46,7 @@ Signup
                       <hr class="bg-body-secondary" />
                       <div class="divider-content-center bg-body-emphasis">où utiliser mon email</div>
                     </div> --}}
-                    <form action="{{route('admin_signup_success')}}" method="post">
+                    <form action="{{route('manager_signup_success')}}" method="post">
                       @csrf
                       @if(session('success'))
                       <div class="alert alert-success" role="alert">
@@ -81,15 +81,7 @@ Signup
                         <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputName">
                             Nom
                         </label>
-                        <input class="form-control" name="first_name" type="text" placeholder="Nom et prenom *" required/>
-                      </div>
-
-                      <div class="mb-3 text-start">
-                        {{-- <label class="form-label" for="email">Nom</label> --}}
-                        <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputName">
-                            Prenom
-                        </label>
-                        <input class="form-control" name="last_name" type="text" placeholder="Nom et prenom *" required/>
+                        <input class="form-control" name="name" type="text" placeholder="Nom et prenom *" required/>
                       </div>
 
                       <div class="mb-3 text-start">
