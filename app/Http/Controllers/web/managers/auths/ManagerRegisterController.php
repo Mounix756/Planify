@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Mail\ManagerOtpMail;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Hash;
-use Auth;
-use Mail;
-use Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Exception;
 use Carbon\Carbon;
@@ -63,7 +63,8 @@ class ManagerRegisterController extends Controller
             //NB: SELON MA LOGIQUE, LE TOKEN DOIT ETRE UNIQUE
             do {
                 $token = Str::random(12);
-            } while (User::where('token', $token)->exists());
+            }
+            while (User::where('token', $token)->exists());
 
             $user->token = $token;
 
@@ -98,21 +99,28 @@ class ManagerRegisterController extends Controller
     //FONCTION QUI VERIFIE QUE LE LIEN SUR LEQUEL L'UTILISATEUR A CLIQUE EST VALIDE
     public function validateToken($token)
     {
-        $user = User::where('token', $token)
+        try
+        {
+            $user = User::where('token', $token)
             ->where('email_verified_at', '>=', Carbon::now())
             ->first();
 
-        if (!$user) {
-            return redirect()->route('signin')->with('info', 'Le lien de validation est invalide ou a expiré.');
+            if (!$user) {
+                return redirect()->route('signin')->with('info', 'Le lien de validation est invalide ou a expiré.');
+            }
+
+            // Activer le compte de l'utilisateur
+            $user->status = true;
+            $user->save();
+
+            // Authentifier l'utilisateur avec le guard admin
+            Auth::guard('manager')->login($user);
+
+            return redirect()->route('manager_signup')->with('success', 'Félicitation ! Votre compte Planify a bien été créé.');
         }
-
-        // Activer le compte de l'utilisateur
-        $user->status = true;
-        $user->save();
-
-        // Authentifier l'utilisateur avec le guard admin
-        //Auth::guard('admin')->login($user);
-
-        return redirect()->route('manager_signup')->with('success', 'Félicitation ! Votre compte Mounix School a bien été créé.');
+        catch(Exception $e)
+        {
+            return redirect()->back()->with('error', "Oups! Une erreur s'est produite lors de la validation du coupe, veillez ressayer.". $e->getMessage());
+        }
     }
 }

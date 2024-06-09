@@ -191,18 +191,18 @@
             </div><!-- parent pages-->
             <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-project-management" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-project-management">
                 <div class="d-flex align-items-center">
-                  <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="clipboard"></span></span><span class="nav-link-text">Gestions des inscriptions</span>
+                  <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="clipboard"></span></span><span class="nav-link-text">Gestions de projets</span>
                 </div>
               </a>
               <div class="parent-wrapper label-1">
                 <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-project-management">
-                  <li class="collapsed-nav-item-title d-none">Gestions des inscriptions</li>
+                  <li class="collapsed-nav-item-title d-none">Gestions de projets</li>
                   <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Eleves</span></div>
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Nouveau projet</span></div>
                     </a><!-- more inner pages-->
                   </li>
                   <li class="nav-item"><a class="nav-link" href="apps/project-management/project-list-view.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Parents</span></div>
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Mes projets</span></div>
                     </a><!-- more inner pages-->
                   </li>
                   {{-- <li class="nav-item"><a class="nav-link" href="apps/project-management/project-card-view.html" data-bs-toggle="" aria-expanded="false">

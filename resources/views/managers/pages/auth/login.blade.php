@@ -14,14 +14,14 @@
 @section('content')
 <main class="main" id="top">
     <div class="container-fluid bg-body-tertiary dark__bg-gray-1200">
-      <div class="bg-holder bg-auth-card-overlay" style="background-image:url(/teachers/assets/img/bg/37.png);"></div>
+      <div class="bg-holder bg-auth-card-overlay" style="background-image:url(/managers/assets/img/bg/37.png);"></div>
       <div class="row flex-center position-relative min-vh-100 g-0 py-5">
         <div class="col-11 col-sm-10 col-xl-8">
           <div class="card border border-translucent auth-card">
             <div class="card-body pe-md-0">
               <div class="row align-items-center gx-0 gy-7">
                 <div class="col-auto bg-body-highlight dark__bg-gray-1100 rounded-3 position-relative overflow-hidden auth-title-box">
-                  <div class="bg-holder" style="background-image:url(/teachers/assets/img/bg/38.png);"></div>
+                  <div class="bg-holder" style="background-image:url(/managers/assets/img/bg/38.png);"></div>
                   <div class="position-relative px-4 px-lg-7 pt-7 pb-7 pb-sm-5 text-center text-md-start pb-lg-7 pb-md-7">
                     <h3 class="mb-3 text-body-emphasis fs-7">Bienvenue à Mounix School!</h3>
                     {{-- <p class="text-body-tertiary">Give yourself some hassle-free development process with the uniqueness of Phoenix!</p> --}}
@@ -31,7 +31,7 @@
                       <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-body-tertiary fw-semibold">Responsive</span></li>
                     </ul> --}}
                   </div>
-                  <div class="position-relative z-n1 mb-6 d-none d-md-block text-center mt-md-15"><img class="auth-title-box-img d-dark-none" src="{{asset('/teachers/assets/img/spot-illustrations/auth.png')}}" alt="" /><img class="auth-title-box-img d-light-none" src="{{asset('/teachers/assets/img/spot-illustrations/auth-dark.png')}}" alt="" /></div>
+                  <div class="position-relative z-n1 mb-6 d-none d-md-block text-center mt-md-15"><img class="auth-title-box-img d-dark-none" src="{{asset('/managers/assets/img/spot-illustrations/auth.png')}}" alt="" /><img class="auth-title-box-img d-light-none" src="{{asset('/managers/assets/img/spot-illustrations/auth-dark.png')}}" alt="" /></div>
                 </div>
                 <div class="col mx-auto">
                   <div class="auth-form-box">
@@ -46,7 +46,7 @@
                       <hr class="bg-body-secondary mt-5 mb-4" />
                       <div class="divider-content-center bg-body-emphasis">où utiliser mon email</div>
                     </div> --}}
-                    <form action="{{route('admin_signin_success')}}" method="post">
+                    <form action="{{route('manager_signin_success')}}" method="post">
                     @csrf
                       @if(session('success'))
                       <div class="alert alert-success" role="alert">
@@ -66,10 +66,17 @@
                       </div>
                       @endif
                     <div class="mb-3 text-start"><label class="form-label" for="email">Email</label>
-                      <div class="form-icon-container"><input class="form-control form-icon-input" name="email" type="email" placeholder="name@pbservices.africa" required/><span class="fas fa-user text-body fs-9 form-icon"></span></div>
+                      <div class="form-icon-container">
+                        <input class="form-control form-icon-input" name="email" type="email" placeholder="ex: ali@gmail.com *" required/>
+                        <span class="fas fa-user text-body fs-9 form-icon"></span>
+                      </div>
                     </div>
-                    <div class="mb-4 text-start"><label class="form-label" for="password">Mot de passe</label>
-                      <div class="form-icon-container"><input class="form-control form-icon-input" name="password" type="password" placeholder="Password" required /><span class="fas fa-key text-body fs-9 form-icon"></span></div>
+                    <div class="mb-4 text-start">
+                        <label class="form-label" for="password">Mot de passe</label>
+                        <div class="form-icon-container">
+                            <input class="form-control form-icon-input" name="password" type="password" placeholder="Password" minlength="8" required />
+                            <span class="fas fa-key text-body fs-9 form-icon"></span>
+                        </div>
                     </div>
                     <div class="row flex-between-center mb-4">
                       <div class="col-auto">
