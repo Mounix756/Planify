@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\web\errors\Error404Controller;
 use App\Http\Controllers\web\managers\auths\ManagerRegisterController;
 use App\Http\Controllers\web\managers\auths\ManagerLoginController;
 use App\Http\Controllers\web\managers\home\ManagerHomeController;
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/404',[Error404Controller::class, 'index'])->name('404');
 
 
 Route::get('/manager/signup',[ManagerRegisterController::class, 'index'])->name('manager_signup');
@@ -29,4 +28,27 @@ Route::get('/manager/signin',[ManagerLoginController::class, 'index'])->name('ma
 Route::post('/manager/signin-success',[ManagerLoginController::class, 'login'])->name('manager_signin_success');
 
 
-Route::get('/manager/home',[ManagerHomeController::class, 'index'])->name('manager_home');
+
+
+
+
+//ROUTE DONC L'ACCÈS NECCESSITE UNE AUTHENTICATION EN TANT QUE MANAGER
+Route::middleware(['web', 'auth:manager'])->group(function(){
+    //PAGE D'ACCUEIL POUR LE MANAGER
+    Route::get('/manager/home',[ManagerHomeController::class, 'index'])->name('manager_home');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/collaborator/signin',[ManagerLoginController::class, 'index'])->name('collaborator_signin');
