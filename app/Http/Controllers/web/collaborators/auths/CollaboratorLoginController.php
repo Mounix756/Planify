@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\web\managers\auths;
+namespace App\Http\Controllers\web\collaborators\auths;
 
 use App\Http\Controllers\Controller;
-use Exception;
 use Illuminate\Http\Request;
+use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
-class ManagerLoginController extends Controller
+class CollaboratorLoginController extends Controller
 {
-    //FONCTION PERMETTANT D'AFFICHER LE FORMULAIRE DE CONNEXION SUR L'APPLI EN TANT QUE PROJECT MANAGER
+    //FONCTION PERMETTANT D'AFFICHER LE FORMULAIRE DE CONNEXION SUR L'APPLI EN TANT QUE COLLABORATEUR
     public function index()
     {
-        return view('managers.pages.auth.login');
+        return view('collaborators.pages.auths.login');
     }
 
     //FONCTION QUI CONNECTE L'UTILISATEUR
@@ -39,12 +39,12 @@ class ManagerLoginController extends Controller
                 $cookieLifetime = 60 * 24 * 30;
             }
 
-            //Tentative de connexion de l'utilisateur avec le guard "manager"
-            if(Auth::guard('manager')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => true, 'is_manager' => true], true))
+            //Tentative de connexion de l'utilisateur avec le guard "collaborator"
+            if(Auth::guard('collaborator')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => true, 'is_manager' => false], true))
             {
                 //Authentification réussie
                 //Ici je defini un cookie en fonction de si l'utilisateur a cliqué sur se souvenir de moi ou non
-                return redirect()->route('manager_home')->withCookie(cookie('Manager_authenticate_cookies', $request->cookie('Manager_authenticate_cookies'), $cookieLifetime));
+                return redirect()->route('collaborator_home')->withCookie(cookie('Collaborator_authenticate_cookies', $request->cookie('Collaborator_authenticate_cookies'), $cookieLifetime));
             }
             else
             {
