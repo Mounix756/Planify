@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\web\managers\auths;
+namespace App\Http\Controllers\web\collaborators\auths;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Mail\ManagerOtpMail;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -14,12 +14,12 @@ use Illuminate\Support\Str;
 use Exception;
 use Carbon\Carbon;
 
-class ManagerRegisterController extends Controller
+class CollaboratorRegisterController extends Controller
 {
-    //FONCTION PERMETTANT D'AFFICHER LE FORMULAIRE D'INSCRIPTION SUR L'APPLI EN TANT QUE PROJECT MANAGER
+    //FONCTION PERMETTANT D'AFFICHER LE FORMULAIRE D'INSCRIPTION SUR L'APPLI EN TANT QUE COLLABORATEUR
     public function index()
     {
-        return view('managers.pages.auth.register');
+        return view('collaborators.pages.auths.register');
     }
 
 
@@ -50,7 +50,7 @@ class ManagerRegisterController extends Controller
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->is_manager = true;
+            $user->is_manager = false;
             $user->status = false;
 
             //UNE FACON DE CREER UN MOT DE PASSE AVEC UNE CLE SECRETE LONGUE, DONC PLUS SECURISE
@@ -106,7 +106,7 @@ class ManagerRegisterController extends Controller
             ->first();
 
             if (!$user) {
-                return redirect()->route('404')->with('info', 'Le lien de validation est invalide ou a expiré.');
+                return redirect()->route('collaborator_signin')->with('info', 'Le lien de validation est invalide ou a expiré.');
             }
 
             // Activer le compte de l'utilisateur
@@ -114,9 +114,9 @@ class ManagerRegisterController extends Controller
             $user->save();
 
             // Authentifier l'utilisateur avec le guard admin
-            Auth::guard('manager')->login($user);
+            Auth::guard('collaborator')->login($user);
 
-            return redirect()->route('manager_signup')->with('success', 'Félicitation ! Votre compte Planify a bien été créé.');
+            return redirect()->route('collaborator_signup')->with('success', 'Félicitation ! Votre compte Planify a bien été créé.');
         }
         catch(Exception $e)
         {
