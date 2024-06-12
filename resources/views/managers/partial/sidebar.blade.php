@@ -197,30 +197,15 @@
               <div class="parent-wrapper label-1">
                 <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-project-management">
                   <li class="collapsed-nav-item-title d-none">Gestions de projets</li>
-                  <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="" aria-expanded="false">
+                  <li class="nav-item"><a class="nav-link" href="#AjoutProjet"  data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Nouveau projet</span></div>
                     </a><!-- more inner pages-->
                   </li>
-                  <li class="nav-item"><a class="nav-link" href="apps/project-management/project-list-view.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Mes projets</span></div>
+                  <li class="nav-item"><a class="nav-link" href="{{route('project_list')}}" data-bs-toggle="" aria-expanded="false">
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Nos projets</span></div>
                     </a><!-- more inner pages-->
                   </li>
-                  {{-- <li class="nav-item"><a class="nav-link" href="apps/project-management/project-card-view.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Project card view</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link" href="apps/project-management/project-board-view.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Project board view</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link" href="apps/project-management/todo-list.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Todo list</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link" href="apps/project-management/project-details.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Project details</span></div>
-                    </a><!-- more inner pages-->
-                  </li> --}}
+                 
                 </ul>
               </div>
             </div><!-- parent pages-->
@@ -1206,4 +1191,6 @@
       </div>
     </div>
     <div class="navbar-vertical-footer"><button class="btn navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center"><span class="uil uil-left-arrow-to-left fs-8"></span><span class="uil uil-arrow-from-right fs-8"></span><span class="navbar-vertical-footer-text ms-2">Collapsed View</span></button></div>
+    @include('managers.pages.projects.index')
+
   </nav>
