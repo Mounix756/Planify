@@ -1,7 +1,7 @@
-@extends('managers.app.app', ['title' => 'Création des taches'])
+@extends('managers.app.app', ['title' => 'Assignation des taches'])
 
 @section('title')
-    Taches
+    Assignations
 @endsection
 
 @section('css')
@@ -18,10 +18,10 @@
         <li class="breadcrumb-item active">Default</li>
       </ol>
     </nav>
-    <h2 class="mb-4">Créer une tache</h2>
+    <h2 class="mb-4">Assignée une tache aux collaborateurs</h2>
     <div class="row">
       <div class="col-xl-9">
-        <form class="row g-3 mb-6" method="POST" action="{{route('task_add')}}" enctype="multipart/form-data">
+        <form class="row g-3 mb-6" method="POST" action="{{route('assign_add')}}" enctype="multipart/form-data">
           @csrf
              @if(session('success'))
               <div class="alert alert-success" role="alert">
@@ -46,36 +46,15 @@
               <label for="floatingInputGrid">Nom de la tache</label>
             </div>
           </div>
-          <div class=" col-md-10 ">
-            <div class="form-floating">
-              <input class="form-control" name="name" id="floatingInputGrid" type="text" placeholder="Nom de la tache" />
-              <label for="floatingInputGrid">Nom de la tache</label>
-            </div>
-          </div>
-         <div class="row mt-4">
-          <div class=" col-md-5">
-            <div class="flatpickr-input-container">
-              <div class="form-floating">
-                <input class="form-control datetimepicker" name="start_time" id="floatingInputStartDate" type="text" placeholder="date debut" data-options='{"disableMobile":true}' />
-                <label class="ps-6" for="floatingInputStartDate">Date debut</label>
-                <span class="uil uil-calendar-alt flatpickr-icon text-body-tertiary"></span
-                  ></div>
-            </div>
-          </div>
-          <div class=" col-md-5">
-            <div class="flatpickr-input-container">
-              <div class="form-floating">
-                <input class="form-control datetimepicker" name="end_time" id="floatingInputDeadline" type="text" placeholder="date fin" data-options='{"disableMobile":true}' />
-                <label class="ps-6" for="floatingInputDeadline">Date fin</label><span class="uil uil-calendar-alt flatpickr-icon text-body-tertiary"></span>
-              </div>
-            </div>
-          </div>
-         </div>
+          <div class="col-8 col-sm-4"><select class="form-select form-select-sm" id="select-gross-revenue-month">
+            <option>Choisir les collaborateurs</option>
+            <option value="{{$user->id}}">{{$user->name}}</option>
+          </select></div>
           
           <div class="col-12 gy-6">
             <div class="row g-3 justify-content-center">
               <div class="col-auto"><button class="btn btn-phoenix-primary px-5">Supprimer</button></div>
-              <div class="col-auto"><button type="submit" class="btn btn-primary px-5 px-sm-15">Créer la tache</button></div>
+              <div class="col-auto"><button type="submit" class="btn btn-primary px-5 px-sm-15">Assigner la tache</button></div>
             </div>
           </div>
         </form>
@@ -133,10 +112,6 @@
     });
   });
 </script>
-
-
-
-
 
 
 

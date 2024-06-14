@@ -77,7 +77,7 @@
                         <td class="price align-middle white-space-nowrap text-start fw-bold text-body-tertiary ps-4">{{$project -> start_time}}</td>
                         <td class="price align-middle white-space-nowrap text-start fw-bold text-body-tertiary ps-4">{{$project -> end_time}}</td>
                         <td class="price align-middle white-space-nowrap text-start fw-bold text-body-tertiary ps-4">{{substr($project -> content, 0, 40)}}...</td>
-                        <td class="align-middle white-space-nowrap text-end statuses"><span class="badge badge-phoenix fs-10 badge-phoenix-danger">Critical</span></td>
+                        <td class="align-middle white-space-nowrap text-end statuses"><span class="badge badge-phoenix fs-10 badge-phoenix-danger">{{$project -> status}}</span></td>
 
                        
                         {{-- <td class="time align-middle white-space-nowrap text-body-tertiary text-opacity-85 ps-4">{{ \Carbon\Carbon::parse($project->created_at)->format('M j, Y') }}. {{ \Carbon\Carbon::parse($project->created_at)->format('H:i') }}</td> --}}
@@ -89,7 +89,7 @@
                               {{-- <a class="dropdown-item" href="#AjoutProjet" data-bs-toggle="modal" data-product-id="{{$project->id}}">Supprimer</a> --}}
                               <a class="dropdown-item" href="{{route('create_task',['token'=>$project -> token])}}" >Ajouter des taches</a>
                               <a class="dropdown-item" href="{{route('task_list',['token'=>$project -> token])}}">Liste des taches</a>
-                              <a class="dropdown-item" href="{{route('delete_project',['token'=>$project -> token])}}">Supprimer </a>
+                              <a class="dropdown-item" onclick="condirmDelete('{{route('delete_project',['token'=>$project -> token])}}')" >Supprimer </a>
                               
                             </div>
                           </div>

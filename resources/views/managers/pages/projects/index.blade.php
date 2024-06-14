@@ -123,29 +123,7 @@
 
 
 
-{{-- Script pour afficher un popup de confirmation lorsque l'utilisateur souhaite supprimer un produit. --}}
-<script>
-    function confirmDelete(deleteUrl) {
-        // Afficher la popup de confirmation
-        Swal.fire({
-            title: 'Êtes-vous sûr de vouloir supprimer cet élève ?',
-            text: "Cette action est irréversible !",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Oui, supprimer',
-            cancelButtonText: 'Annuler',
-        }).then((result) => {
-            // Si l'utilisateur clique sur "Oui, supprimer" dans la popup, effectuer la suppression
-            if (result.isConfirmed) {
-                // Rediriger vers l'URL de suppression passée en paramètre
-                window.location.href = deleteUrl;
-            }
-            // Sinon, ne rien faire
-        });
-    }
-</script>
+
 
 
 <script>
@@ -156,54 +134,6 @@
         })
     })
 </script>
-
-
-{{-- Script d'affichage de popup de confirmation lorsque l'utilisateur souhaite publier un produit --}}
-<script>
-    function confirmPublish(deleteUrl) {
-        Swal.fire({
-            title: 'Le produit sera visible sur la plateforme lavendeuse.africa.',
-            // text: "Cette action est irréversible !",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Oui, publier',
-            cancelButtonText: 'Annuler',
-        }).then((result) => {
-            // Si l'utilisateur clique sur "Oui, publier" dans la popup, effectuer la publication
-            if (result.isConfirmed) {
-                // Rediriger vers l'URL de publication passée en paramètre
-                window.location.href = deleteUrl;
-            }
-            // Sinon, ne rien faire
-        });
-    }
-</script>
-
-{{-- Script d'affichage de popup de confirmation lorsque l'utilisateur souhaite annuler la publication du produit --}}
-<script>
-    function confirmNotPublish(deleteUrl) {
-        Swal.fire({
-            title: 'Le produit ne sera plus visible sur la plateforme lavendeuse.africa.',
-            // text: "Cette action est irréversible !",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Oui, depublier',
-            cancelButtonText: 'Annuler',
-        }).then((result) => {
-            // Si l'utilisateur clique sur "Oui, annuler" dans la popup, effectuer l'annulation
-            if (result.isConfirmed) {
-                // Rediriger vers l'URL d'annulation passée en paramètre
-                window.location.href = deleteUrl;
-            }
-            // Sinon, ne rien faire
-        });
-    }
-</script>
-
 {{-- Popup d'affichage d'eventuel erreurs survenues lors d'une opération. --}}
 <script>
     @if(session('error'))

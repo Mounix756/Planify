@@ -65,7 +65,9 @@
           <table class="table fs-9 mb-0 border-top border-translucent">
             <thead>
               <tr>
+                <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="projectName" style="width:30%;">##</th>
                 <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="projectName" style="width:30%;">NOM TACHE</th>
+                <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="projectName" style="width:30%;">COLLABORATEURS</th>
                 <th class="sort align-middle ps-3" scope="col" data-sort="start" style="width:10%;">DATE DEBUT</th>
                 <th class="sort align-middle ps-3" scope="col" data-sort="deadline" style="width:15%;">DATE FIN</th>
                 <th class="sort align-middle text-end" scope="col" data-sort="statuses" style="width:10%;">STATUS</th>
@@ -77,25 +79,24 @@
               @php
               $numero = 0;
               @endphp
-              @foreach ($tasks as $task)
+              @foreach ($assignations as $assignation)
               @php
               $numero +=1
               @endphp
               <tr class="position-static">
                 <td class="product align-middle ps-4"><a class="fw-semibold line-clamp-3 mb-0" href="#">{{$numero}}</a></td>
                 <td class="align-middle time white-space-nowrap ps-0 projectName py-4"><a class="fw-bold fs-8" href="#">{{$task-> name}}</a></td>
-               
+                <td class="align-middle time white-space-nowrap ps-0 projectName py-4"><a class="fw-bold fs-8" href="#">{{$user-> name}}</a></td>
                 <td class="align-middle white-space-nowrap start ps-3 py-4">
                   {{$task -> start_time}}                </td>
                 <td class="align-middle white-space-nowrap deadline ps-3 py-4">
                   {{$task -> end_time}}                </td>
                
-                <td class="align-middle white-space-nowrap text-end statuses"><span class="badge badge-phoenix fs-10 badge-phoenix-danger">{{$task -> status}}</span></td>
+                <td class="align-middle white-space-nowrap text-end statuses"><span class="badge badge-phoenix fs-10 badge-phoenix-danger">{{$assignation -> status}}</span></td>
                 <td class="align-middle text-end white-space-nowrap pe-0 action">
                   <div class="btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
-                    <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="{{route('editer_task',['token'=>$task -> token])}}">Editer</a>
-                      <a class="dropdown-item" href="{{route('assign_task',['token'=>$task -> token])}}">Assigner aux collaborateurs</a>
-                      <div class="dropdown-divider"></div><a class="dropdown-item text-danger" onclick="confirmDelete('{{route('delete_task',['token'=>$task -> token])}}')">Supprimer</a>
+                    <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="{{route('edit_assign',['token'=>$assignation -> token])}}">Editer</a>
+                      <div class="dropdown-divider"></div><a class="dropdown-item text-danger" onclick="confirmDelete('{{route('delete_assign',['token'=>$assignation -> token])}}')">Supprimer</a>
                     </div>
                   </div>
                 </td>

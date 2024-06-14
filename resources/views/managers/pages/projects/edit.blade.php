@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="col-lg-12">
-                                <button class="btn btn-primary mb-2 px-8 px-sm-11 me-2" type="submit" >Enregistrer</button>
+                                <button class="btn btn-primary mb-2 px-8 px-sm-11 me-2" onclick="confirmUpdate()" type="submit" >Enregistrer</button>
                                 <a href="#"><button class="btn btn-phoenix-secondary text-nowrap" type="button">Effacer</button></a>
                             </div>
                         </div>
@@ -122,32 +122,75 @@
   });
 </script>
 
-
-
-
-{{-- Script pour afficher un popup de confirmation lorsque l'utilisateur souhaite supprimer un produit. --}}
 <script>
-    function confirmDelete(deleteUrl) {
-        // Afficher la popup de confirmation
+    $(document).ready(function() {
+        $('#contenu').summernote({
+            height: "200px",
+            placeholder: "Entrez le contenu de l'actualité*"
+        })
+    })
+</script>
+
+{{-- Script pour demander la confirmation avant d'effectuer la mise à jour de l'actualité --}}
+
+<script>
+    function confirmUpdate() {
+        // Afficher la boîte de dialogue de confirmation
         Swal.fire({
-            title: 'Êtes-vous sûr de vouloir supprimer cet élève ?',
-            text: "Cette action est irréversible !",
-            icon: 'warning',
+            title: 'Confirmation',
+            text: 'Êtes-vous sûr de vouloir enregistrer ces modifications ?',
+            icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Oui, supprimer',
+            confirmButtonText: 'Oui, enregistrer',
             cancelButtonText: 'Annuler',
         }).then((result) => {
-            // Si l'utilisateur clique sur "Oui, supprimer" dans la popup, effectuer la suppression
             if (result.isConfirmed) {
-                // Rediriger vers l'URL de suppression passée en paramètre
-                window.location.href = deleteUrl;
+                // Si l'utilisateur clique sur "Oui, enregistrer", soumettre le formulaire
+                document.querySelector("#confirmationForm").submit();
             }
-            // Sinon, ne rien faire
+            // Sinon, rien ne se produit
         });
     }
 </script>
+
+{{-- Afficher un messages d'erreur survenu lors de l'enregistrement de l'actualité. --}}
+<script>
+    @if(session('error'))
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            title: 'Erreur',
+            text: '{{ session('error') }}',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    });
+    @endif
+</script>
+{{-- Message en cas d'enregistrement réussie. --}}
+@if(session('success'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            title: 'Succès',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            showConfirmButton: false,
+        });
+
+        setTimeout(function() {
+            window.location.href = '{{ route('liste_des_actualites') }}';
+        }, 4000);
+    });
+</script>
+@endif
+
+
+
+
+
 
 
 <script>

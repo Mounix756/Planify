@@ -9,6 +9,8 @@ use App\Http\Controllers\web\managers\auths\ManagerLoginController;
 use App\Http\Controllers\web\managers\home\ManagerHomeController;
 use App\Http\Controllers\web\managers\projects\ProjectController;
 use App\Http\Controllers\web\managers\tasks\TaskController;
+use App\Http\Controllers\web\managers\tasks\AssignationController;
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -57,6 +59,12 @@ Route::middleware(['web', 'auth:manager'])->group(function(){
     Route::match(['get', 'post'], 'manager/task-update', [TaskController::class, 'update_task'])->name('update_task');
     Route::match(['get', 'post'], 'manager/task-delete/{token}', [TaskController::class, 'delete_task'])->name('delete_task');
 
+    Route::get('/manager/create-assignation',[AssignationController::class, 'assign_task'])->name('assign_task');
+    Route::get('/manager/assignation-list', [AssignationController::class, 'assign_list'])->name('assign_list');
+    Route::match(['get', 'post'], 'manager/assignation-delete/{token}', [AssignationController::class, 'delete_assign'])->name('delete_assign');
+    Route::post('/manager/add-assignation',[AssignationController::class, 'assign_add'])->name('assign_add');
+    Route::match(['get', 'post'], 'manager/assignation-edit/{token}', [AssignationController::class, 'edit_assign'])->name('edit_assign');
+    Route::match(['get', 'post'], 'manager/assignation-update', [AssignationController::class, 'update_assign'])->name('update_assign');
 
 });
 

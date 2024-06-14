@@ -47,6 +47,7 @@ class TaskController extends Controller
             $task->start_time = $request->start_time;
             $task->end_time = $request->end_time;
             $task->token = $token;
+            $task->status = $request->status;
             $task->user_id = $request->user_id;
             $task->project_id = $request->project_id; 
 
@@ -79,7 +80,7 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($id);
         $projects = Project::all();
-        return view('tasks.edit', compact('task', 'projects'));
+        return view('managers.pages.tasks.edit', compact('task', 'projects'));
     }
 
 
@@ -101,6 +102,7 @@ class TaskController extends Controller
             $task = Task::findOrFail($id);
             $task->name = $request->name;
             $task->start_time = $request->start_time;
+            $task->status = $request->status;
             $task->end_time = $request->end_time;
             $task->project_id = $request->project_id; 
 

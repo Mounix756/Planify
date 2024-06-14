@@ -46,7 +46,7 @@
           <div class="col-12 gy-6">
             <div class="row g-3 justify-content-center">
               <div class="col-auto"><button class="btn btn-phoenix-primary px-5">Supprimer</button></div>
-              <div class="col-auto"><button class="btn btn-primary px-5 px-sm-15">Mettre à jour</button></div>
+              <div class="col-auto"><button onclick="confirmUpdate()" class="btn btn-primary px-5 px-sm-15">Mettre à jour</button></div>
             </div>
           </div>
         </form>
@@ -140,43 +140,9 @@
 </script>
 
 
-{{-- Script d'affichage de popup de confirmation lorsque l'utilisateur souhaite publier un produit --}}
-<script>
-    function confirmPublish(deleteUrl) {
-        Swal.fire({
-            title: 'Le produit sera visible sur la plateforme lavendeuse.africa.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Oui, publier',
-            cancelButtonText: 'Annuler',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = deleteUrl;
-            }
-        });
-    }
-</script>
 
-{{-- Script d'affichage de popup de confirmation lorsque l'utilisateur souhaite annuler la publication du produit --}}
-<script>
-    function confirmNotPublish(deleteUrl) {
-        Swal.fire({
-            title: 'Le produit ne sera plus visible sur la plateforme lavendeuse.africa.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Oui, depublier',
-            cancelButtonText: 'Annuler',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = deleteUrl;
-            }
-        });
-    }
-</script>
+
+
 
 {{-- Popup d'affichage d'eventuel erreurs survenues lors d'une opération. --}}
 <script>
@@ -190,6 +156,30 @@
         });
     });
     @endif
+</script>
+
+{{-- Script pour demander la confirmation avant d'effectuer la mise à jour de l'actualité --}}
+
+<script>
+  function confirmUpdate() {
+      // Afficher la boîte de dialogue de confirmation
+      Swal.fire({
+          title: 'Confirmation',
+          text: 'Êtes-vous sûr de vouloir enregistrer ces modifications ?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Oui, enregistrer',
+          cancelButtonText: 'Annuler',
+      }).then((result) => {
+          if (result.isConfirmed) {
+              // Si l'utilisateur clique sur "Oui, enregistrer", soumettre le formulaire
+              document.querySelector("#confirmationForm").submit();
+          }
+          // Sinon, rien ne se produit
+      });
+  }
 </script>
 
 {{-- Popup affichant une opération réussie --}}

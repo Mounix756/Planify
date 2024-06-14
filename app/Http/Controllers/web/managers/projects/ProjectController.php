@@ -43,6 +43,7 @@ class ProjectController extends Controller
             $project->name = $request->name;
             $project->start_time = $request->start_time;
             $project->end_time = $request->end_time;
+            $project->status = $request->status;
             $project->content = $request->content;
             $project->token = $token;
             $project->user_id = $request->user_id; 
@@ -93,13 +94,15 @@ class ProjectController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'start_time' => 'required|date',
-            'end_time' => 'required|date|after_or_equal:start_time',
+                'end_time' => 'required|date|after_or_equal:start_time',
             ]);
 
             $project = new Project();
             $project->name = $request->name;
             $project->start_time = $request->start_time;
             $project->end_time = $request->end_time;
+            $project->status = $request->status;
+
             $project->content = $request->content;
 
             $project->save();
