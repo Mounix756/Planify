@@ -38,7 +38,7 @@
                         <span class="fa-solid fa-file-export fs-9 me-2"></span>
                         Exporter
                     </button>
-                    <a href="#AjoutProjet" data-bs-toggle="modal">
+                    <a href="{{route('create_project')}}" data-bs-toggle="modal">
                         <button class="btn btn-primary">
                             <span class="fas fa-plus me-2"></span>
                             Ajouter un Projet
@@ -59,6 +59,7 @@
                       <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">DATE FIN</th>
                       <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">DESCRIPTION</th>
                       <th class="sort align-middle ps-4" scope="col" data-sort="category">STATUS</th>
+                      <th class="sort align-middle ps-4" scope="col" data-sort="category">ACTIONS</th>                      
                       <th class="sort text-start align-middle pe-0 ps-4" scope="col"></th>
                     </tr>
                   </thead>
@@ -76,6 +77,7 @@
                         <td class="price align-middle white-space-nowrap text-start fw-bold text-body-tertiary ps-4">{{$project -> start_time}}</td>
                         <td class="price align-middle white-space-nowrap text-start fw-bold text-body-tertiary ps-4">{{$project -> end_time}}</td>
                         <td class="price align-middle white-space-nowrap text-start fw-bold text-body-tertiary ps-4">{{substr($project -> content, 0, 40)}}...</td>
+                        <td class="align-middle white-space-nowrap text-end statuses"><span class="badge badge-phoenix fs-10 badge-phoenix-danger">Critical</span></td>
 
                        
                         {{-- <td class="time align-middle white-space-nowrap text-body-tertiary text-opacity-85 ps-4">{{ \Carbon\Carbon::parse($project->created_at)->format('M j, Y') }}. {{ \Carbon\Carbon::parse($project->created_at)->format('H:i') }}</td> --}}
@@ -83,9 +85,11 @@
                           <div class="btn-reveal-trigger position-static">
                             <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
                             <div class="dropdown-menu dropdown-menu-end py-2">
-                              <a class="dropdown-item" href="#EditProjet" data-bs-toggle="modal" data-product-id="{{$project->id}}">Modifier les informations</a>
-                              <a class="dropdown-item" href="#AjoutProjet" data-bs-toggle="modal" data-product-id="{{$project->id}}">Ajouter des projets</a>
-                              <a class="dropdown-item" href="{{route('delete_project',['id'=>$project -> id])}}">Supprimer </a>
+                              <a class="dropdown-item" href="{{route('editer_project',['token'=>$project -> token])}}" >Editer</a>
+                              {{-- <a class="dropdown-item" href="#AjoutProjet" data-bs-toggle="modal" data-product-id="{{$project->id}}">Supprimer</a> --}}
+                              <a class="dropdown-item" href="{{route('create_task',['token'=>$project -> token])}}" >Ajouter des taches</a>
+                              <a class="dropdown-item" href="{{route('task_list',['token'=>$project -> token])}}">Liste des taches</a>
+                              <a class="dropdown-item" href="{{route('delete_project',['token'=>$project -> token])}}">Supprimer </a>
                               
                             </div>
                           </div>
@@ -120,12 +124,7 @@
         </div>
 
         
-        @include('managers.pages.projects.index')
-        @include('managers.pages.projects.edit')
-
-
-
-        @include('managers.partial.footer')
+        
     </div>
 @endsection
 

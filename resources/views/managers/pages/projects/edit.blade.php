@@ -1,3 +1,15 @@
+@extends('managers.app.app', ['title' => 'Nos projets'])
+
+@section('title')
+    projets
+@endsection
+
+@section('css')
+
+@endsection
+
+
+@section('content')
 <div class="modal fade" id="EditProjet" tabindex="-1" aria-labelledby="projectsBoardViewModal" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content overflow-hidden">
@@ -69,3 +81,162 @@
         </div>
     </div>
 </div>
+@endsection
+
+
+@section('js')
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Récupérer le modal et le champ eleve_id
+      const modal = document.getElementById('AjoutProjet');
+      const productIdInput = modal.querySelector('input[name="id"]');
+
+      // Écouter le clic sur les boutons "Faire une promotion"
+      const promotionButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+      promotionButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const productId = this.getAttribute('data-product-id');
+          // Affecter l'ID du produit au champ product_id dans le formulaire
+          productIdInput.value = id;
+        });
+      });
+    });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Récupérer le modal et le champ eleve_id
+    const modal = document.getElementById('EditProjet');
+    const productIdInput = modal.querySelector('input[name="project_id"]');
+
+    // Écouter le clic sur les boutons "Faire une promotion"
+    const promotionButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
+    promotionButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const productId = this.getAttribute('data-product-id');
+        // Affecter l'ID du produit au champ product_id dans le formulaire
+        productIdInput.value = productId;
+      });
+    });
+  });
+</script>
+
+
+
+
+{{-- Script pour afficher un popup de confirmation lorsque l'utilisateur souhaite supprimer un produit. --}}
+<script>
+    function confirmDelete(deleteUrl) {
+        // Afficher la popup de confirmation
+        Swal.fire({
+            title: 'Êtes-vous sûr de vouloir supprimer cet élève ?',
+            text: "Cette action est irréversible !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, supprimer',
+            cancelButtonText: 'Annuler',
+        }).then((result) => {
+            // Si l'utilisateur clique sur "Oui, supprimer" dans la popup, effectuer la suppression
+            if (result.isConfirmed) {
+                // Rediriger vers l'URL de suppression passée en paramètre
+                window.location.href = deleteUrl;
+            }
+            // Sinon, ne rien faire
+        });
+    }
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#content').summernote({
+            height: "220px",
+            placeholder: "Votre message * *"
+        })
+    })
+</script>
+
+
+{{-- Script d'affichage de popup de confirmation lorsque l'utilisateur souhaite publier un produit --}}
+<script>
+    function confirmPublish(deleteUrl) {
+        Swal.fire({
+            title: 'Le produit sera visible sur la plateforme lavendeuse.africa.',
+            // text: "Cette action est irréversible !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, publier',
+            cancelButtonText: 'Annuler',
+        }).then((result) => {
+            // Si l'utilisateur clique sur "Oui, publier" dans la popup, effectuer la publication
+            if (result.isConfirmed) {
+                // Rediriger vers l'URL de publication passée en paramètre
+                window.location.href = deleteUrl;
+            }
+            // Sinon, ne rien faire
+        });
+    }
+</script>
+
+{{-- Script d'affichage de popup de confirmation lorsque l'utilisateur souhaite annuler la publication du produit --}}
+<script>
+    function confirmNotPublish(deleteUrl) {
+        Swal.fire({
+            title: 'Le produit ne sera plus visible sur la plateforme lavendeuse.africa.',
+            // text: "Cette action est irréversible !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, depublier',
+            cancelButtonText: 'Annuler',
+        }).then((result) => {
+            // Si l'utilisateur clique sur "Oui, annuler" dans la popup, effectuer l'annulation
+            if (result.isConfirmed) {
+                // Rediriger vers l'URL d'annulation passée en paramètre
+                window.location.href = deleteUrl;
+            }
+            // Sinon, ne rien faire
+        });
+    }
+</script>
+
+{{-- Popup d'affichage d'eventuel erreurs survenues lors d'une opération. --}}
+<script>
+    @if(session('error'))
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            title: 'Erreur',
+            text: '{{ session('error') }}',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    });
+    @endif
+</script>
+
+{{-- Popup affichant une opération réussie --}}
+
+@if(session('success'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            title: 'Succès',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            showConfirmButton: false,
+        });
+
+        // setTimeout(function() {
+        //     window.location.href = '{{ route('admin_students_list') }}';
+        // }, 1000);
+    });
+</script>
+@endif
+@endsection

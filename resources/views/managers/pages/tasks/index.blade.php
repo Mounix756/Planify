@@ -1,7 +1,7 @@
-@extends('managers.app.app', ['title' => 'Nos projets'])
+@extends('managers.app.app', ['title' => 'Création des taches'])
 
 @section('title')
-    Projets
+    Taches
 @endsection
 
 @section('css')
@@ -10,79 +10,93 @@
 
 
 @section('content')
-<div class="modal fade"  tabindex="-1" aria-labelledby="projectsBoardViewModal" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content overflow-hidden">
-        <div class="modal-header position-relative p-0">
-            <button class="btn btn-circle project-modal-btn position-absolute end-0 top-0 mt-3 me-3 bg-body-emphasis" data-bs-dismiss="modal">
-                <span class="fa-solid fa-xmark text-body dark__text-white"></span>
-            </button>
-        </div>
-          <div class="row mt-8" style="margin: 20px">
-            <form method="post" action="{{route('project_add')}}" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-lg-12 mb-4 mb-lg-0">
-                        @csrf
-                        @if(session('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
-                            </div>
-                            @endif
+<div class="content">
+    <nav class="mb-2" aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
+        <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
+        <li class="breadcrumb-item active">Default</li>
+      </ol>
+    </nav>
+    <h2 class="mb-4">Créer une tache</h2>
+    <div class="row">
+      <div class="col-xl-9">
+        <form class="row g-3 mb-6" method="POST" action="{{route('task_add')}}" enctype="multipart/form-data">
+          @csrf
+             @if(session('success'))
+              <div class="alert alert-success" role="alert">
+                  {{ session('success') }}
+              </div>
+              @endif
 
-                            @if(session('error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ session('error') }}
-                            </div>
-                            @endif
+              @if(session('error'))
+              <div class="alert alert-danger" role="alert">
+                  {{ session('error') }}
+              </div>
+              @endif
 
-                            @if(session('infos'))
-                            <div class="alert alert-warning" role="alert">
-                                {{ session('infos') }}
-                            </div>
-                        @endif
-                        <h3 class="mb-5">Projets</h3>
-                        <div class="row g-4">
-                            <div class="col-12">
-                                <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputAddress1">Nom du projet</label>
-                                <input class="form-control" id="inputAddress1" name="name" type="text" placeholder="Nom du projet *" />
-                            </div>
-
-                            <div class="col-12" style="display: none">
-                                <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputAddress1">Prenom de l'élève</label>
-                                <input class="form-control" name="sender_id" type="text" value="{{Auth::guard('manager')->user()->id}}"/>
-                            </div>
-
-
-                            <div class="col-12">
-                                <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputAddress1">Description du projet</label>
-                                <textarea id="content" class="form-control" name="content" type="text" placeholder="Description du projet *"></textarea>
-                            </div>
-
-                            <div class="col-12">
-                                <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="startDate">Date de début</label>
-                                <input class="form-control" id="startDate" name="start_time" type="date" placeholder="Date de début *" />
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="endDate">Date de fin</label>
-                                <input class="form-control" id="endDate" name="end_time" type="date" placeholder="Date de fin *" />
-                            </div>
-
-                            <div class="col-lg-12">
-                                <button class="btn btn-primary mb-2 px-8 px-sm-11 me-2" type="submit" >Enregistrer</button>
-                                <a href="#"><button class="btn btn-phoenix-secondary text-nowrap" type="button">Effacer</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+              @if(session('infos'))
+              <div class="alert alert-warning" role="alert">
+                  {{ session('infos') }}
+              </div>
+          @endif
+          <div class=" col-md-10 ">
+            <div class="form-floating" style="display: none">
+              <input class="form-control" name="name" id="floatingInputGrid" type="text" value="{{Auth::guard('manager')->user()->id}}" />
+              <label for="floatingInputGrid">Nom de la tache</label>
+            </div>
+          </div>
+          <div class=" col-md-10 ">
+            <div class="form-floating">
+              <input class="form-control" name="name" id="floatingInputGrid" type="text" placeholder="Nom de la tache" />
+              <label for="floatingInputGrid">Nom de la tache</label>
+            </div>
+          </div>
+         <div class="row mt-4">
+          <div class=" col-md-5">
+            <div class="flatpickr-input-container">
+              <div class="form-floating">
+                <input class="form-control datetimepicker" name="start_time" id="floatingInputStartDate" type="text" placeholder="date debut" data-options='{"disableMobile":true}' />
+                <label class="ps-6" for="floatingInputStartDate">Date debut</label>
+                <span class="uil uil-calendar-alt flatpickr-icon text-body-tertiary"></span
+                  ></div>
+            </div>
+          </div>
+          <div class=" col-md-5">
+            <div class="flatpickr-input-container">
+              <div class="form-floating">
+                <input class="form-control datetimepicker" name="end_time" id="floatingInputDeadline" type="text" placeholder="date fin" data-options='{"disableMobile":true}' />
+                <label class="ps-6" for="floatingInputDeadline">Date fin</label><span class="uil uil-calendar-alt flatpickr-icon text-body-tertiary"></span>
+              </div>
+            </div>
+          </div>
+         </div>
+          
+          <div class="col-12 gy-6">
+            <div class="row g-3 justify-content-center">
+              <div class="col-auto"><button class="btn btn-phoenix-primary px-5">Supprimer</button></div>
+              <div class="col-auto"><button type="submit" class="btn btn-primary px-5 px-sm-15">Créer la tache</button></div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
-
-@endsection
+   
+  </div>
+  @endsection
 
 
 @section('js')
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      var element = document.getElementById('organizerMultiple');
+      var choices = new Choices(element, {
+          removeItemButton: true,
+          placeholder: true
+      });
+  });
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

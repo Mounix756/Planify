@@ -8,6 +8,8 @@ use App\Http\Controllers\web\managers\auths\ManagerRegisterController;
 use App\Http\Controllers\web\managers\auths\ManagerLoginController;
 use App\Http\Controllers\web\managers\home\ManagerHomeController;
 use App\Http\Controllers\web\managers\projects\ProjectController;
+use App\Http\Controllers\web\managers\tasks\TaskController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -41,11 +43,19 @@ Route::middleware(['web', 'auth:manager'])->group(function(){
     Route::get('/manager/home',[ManagerHomeController::class, 'index'])->name('manager_home');
     Route::get('/manager/projects-list', [ProjectController::class, 'project_list'])->name('project_list');
     Route::get('/search-projects', [ProjectController::class, 'search_projects'])->name('search_projects');
-    Route::get('/manager/create',[ProjectController::class, 'create_project'])->name('create_project');
+    Route::get('/manager/create-project',[ProjectController::class, 'create_project'])->name('create_project');
     Route::post('/manager/add-project',[ProjectController::class, 'project_add'])->name('project_add');
-    Route::match(['get', 'post'], 'manager/project-edit/{id}', [ProjectController::class, 'editer_project'])->name('editer_project');
+    Route::match(['get', 'post'], 'manager/project-edit/{token}', [ProjectController::class, 'editer_project'])->name('editer_project');
     Route::match(['get', 'post'], 'manager/project-update', [ProjectController::class, 'update_project'])->name('update_project');
-    Route::match(['get', 'post'], 'manager/project-delete/{id}', [ProjectController::class, 'delete_project'])->name('delete_project');
+    Route::match(['get', 'post'], 'manager/project-delete/{token}', [ProjectController::class, 'delete_project'])->name('delete_project');
+
+    Route::get('/manager/tasks-list', [TaskController::class, 'task_list'])->name('task_list');
+    Route::get('/search-tasks', [TaskController::class, 'search_tasks'])->name('search_tasks');
+    Route::get('/manager/create-task',[TaskController::class, 'create_task'])->name('create_task');
+    Route::post('/manager/add-task',[TaskController::class, 'task_add'])->name('task_add');
+    Route::match(['get', 'post'], 'manager/task-edit/{token}', [TaskController::class, 'editer_task'])->name('editer_task');
+    Route::match(['get', 'post'], 'manager/task-update', [TaskController::class, 'update_task'])->name('update_task');
+    Route::match(['get', 'post'], 'manager/task-delete/{token}', [TaskController::class, 'delete_task'])->name('delete_task');
 
 
 });

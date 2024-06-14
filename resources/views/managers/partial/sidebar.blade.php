@@ -197,7 +197,7 @@
               <div class="parent-wrapper label-1">
                 <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-project-management">
                   <li class="collapsed-nav-item-title d-none">Gestions de projets</li>
-                  <li class="nav-item"><a class="nav-link" href="#AjoutProjet"  data-bs-toggle="" aria-expanded="false">
+                  <li class="nav-item"><a class="nav-link" href="{{route('create_project')}}"  data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Nouveau projet</span></div>
                     </a><!-- more inner pages-->
                   </li>
@@ -209,35 +209,13 @@
                 </ul>
               </div>
             </div><!-- parent pages-->
+
+            
             <div class="nav-item-wrapper"><a class="nav-link label-1" href="apps/chat.html" role="button" data-bs-toggle="" aria-expanded="false">
                 <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="message-square"></span></span><span class="nav-link-text-wrapper"><span class="nav-link-text">Chat</span></span></div>
               </a>
             </div><!-- parent pages-->
-            <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-email" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-email">
-                <div class="d-flex align-items-center">
-                  <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="mail"></span></span><span class="nav-link-text">Messagérie</span>
-                </div>
-              </a>
-              <div class="parent-wrapper label-1">
-                <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-email">
-                  <li class="collapsed-nav-item-title d-none">Messagérie</li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="apps/email/compose.html" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text">Nouveau message</span></div>
-                    </a><!-- more inner pages-->
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="apps/email/inbox.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Boite de reception</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Boite d'envoi</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                </ul>
-              </div>
-            </div><!-- parent pages-->
+           
             <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-events" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="nv-events">
                 <div class="d-flex align-items-center">
                   <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="bookmark"></span></span><span class="nav-link-text">Actualités</span>

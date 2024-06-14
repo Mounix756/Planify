@@ -8,6 +8,8 @@ use App\Models\User;
 
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
@@ -17,28 +19,42 @@ class ProjectController extends Controller
     {
         return view('managers.pages.projects.index');
     }
-
+    
     //Fonction permettant d'ajouter un projet à la base de donnée
     public function project_add(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'start_time' => 'required',
-                'end_time' => 'required',
+               'start_time' => 'required|date',
+               'end_time' => 'required|date|after_or_equal:start_time',
             ]);
+    
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
+            do {
+                $token = Str::random(12);
+            }
+            while (Project::where('token', $token)->exists());
+    
             $project = new Project();
             $project->name = $request->name;
             $project->start_time = $request->start_time;
             $project->end_time = $request->end_time;
             $project->content = $request->content;
-
+            $project->token = $token;
+            $project->user_id = $request->user_id; 
+    
             $project->save();
+    
+            return redirect()->back()->with('success', 'Project added successfully!');
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+    
 
     //Fonction affichant la liste des projets
     public function project_list()
@@ -57,14 +73,17 @@ class ProjectController extends Controller
 }
 
     //Fonction qui permet d'éditer le contenu d'une actualité
-    public function editer_project($id)
+    public function edit_project($id)
     {
         $project = Project::find($id);
-
-        return view('managers.pages.projects.edit', compact('project'))->with('success', 'Projet editer avec succes!');
+    
+        if (!$project) {
+            return redirect()->route('project_list')->with('error', 'Projet non trouvé.');
+        }
+    
+        return view('managers.pages.projects.edit', compact('project'));
     }
-
-
+    
     //Fonction permettant de modifier un projet
     public function update_project(Request $request, $project)
     {
@@ -73,8 +92,8 @@ class ProjectController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'start_time' => 'required',
-                'end_time' => 'required',
+                'start_time' => 'required|date',
+            'end_time' => 'required|date|after_or_equal:start_time',
             ]);
 
             $project = new Project();
@@ -88,6 +107,7 @@ class ProjectController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
+    
 
     //Fonction permettant de supprimer un projet
     public function delete_project($id)
