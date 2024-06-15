@@ -4,8 +4,8 @@
         <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
         <a class="navbar-brand me-1 me-sm-3" href="index-2.html">
           <div class="d-flex align-items-center">
-            <div class="d-flex align-items-center"><img src="{{asset('logo/logo1.jpg')}}" alt="Mounix School" width="60" />
-              <p class="logo-text ms-2 d-none d-sm-block">Mounix School</p>
+            <div class="d-flex align-items-center"><img src="{{asset('logo/logo.png')}}" alt="Mounix School" width="60" />
+              <p class="logo-text ms-2 d-none d-sm-block">Planify</p>
             </div>
           </div>
         </a>
@@ -565,8 +565,8 @@
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
       <a class="navbar-brand me-1 me-sm-3" href="index-2.html">
         <div class="d-flex align-items-center">
-          <div class="d-flex align-items-center"><img src="{{asset('logo/logo1.jpg')}}" alt="Mounix School" width="60" />
-            <p class="logo-text ms-2 d-none d-sm-block">Mounix School</p>
+          <div class="d-flex align-items-center"><img src="{{asset('logo/logo.png')}}" alt="Mounix School" width="60" />
+            <p class="logo-text ms-2 d-none d-sm-block">PLANIFY</p>
           </div>
         </div>
       </a>
@@ -1287,7 +1287,8 @@
   <nav class="navbar navbar-top navbar-slim justify-content-between fixed-top navbar-expand-lg" id="navbarTopSlim" style="display:none;">
     <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-      <a class="navbar-brand navbar-brand" href="index-2.html">Mounix School <span class="text-body-highlight d-none d-sm-inline">slim</span></a>
+      <a class="navbar-brand navbar-brand" href="index-2.html">Planify
+        <span class="text-body-highlight d-none d-sm-inline">slim</span></a>
     </div>
     <div class="collapse navbar-collapse navbar-top-collapse order-1 order-lg-0 justify-content-center" id="navbarTopCollapse">
       <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
@@ -2003,8 +2004,8 @@
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
       <a class="navbar-brand me-1 me-sm-3" href="index-2.html">
         <div class="d-flex align-items-center">
-          <div class="d-flex align-items-center"><img src="{{asset('logo/logo1.jpg')}}" alt="Mounix School" width="60" />
-            <p class="logo-text ms-2 d-none d-sm-block">Mounix School</p>
+          <div class="d-flex align-items-center"><img src="{{asset('logo/logo.png')}}" alt="Mounix School" width="60" />
+            <p class="logo-text ms-2 d-none d-sm-block">Planify</p>
           </div>
         </div>
       </a>
@@ -2725,7 +2726,7 @@
   <nav class="navbar navbar-top fixed-top navbar-slim justify-content-between navbar-expand-lg" id="navbarComboSlim" data-navbar-top="combo" data-move-target="#navbarVerticalNav" style="display:none;">
     <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-      <a class="navbar-brand navbar-brand" href="index-2.html">Mounix School <span class="text-body-highlight d-none d-sm-inline">slim</span></a>
+      <a class="navbar-brand navbar-brand" href="index-2.html">Planify <span class="text-body-highlight d-none d-sm-inline">slim</span></a>
     </div>
     <div class="collapse navbar-collapse navbar-top-collapse order-1 order-lg-0 justify-content-center" id="navbarTopCollapse">
       <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
@@ -3443,8 +3444,8 @@
           <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
           <a class="navbar-brand me-1 me-sm-3" href="index-2.html">
             <div class="d-flex align-items-center">
-              <div class="d-flex align-items-center"><img src="{{asset('logo/logo1.jpg')}}" alt="Mounix School" width="60" />
-                <p class="logo-text ms-2 d-none d-sm-block">Mounix School</p>
+              <div class="d-flex align-items-center"><img src="{{asset('logo/logo.png')}}" alt="Mounix School" width="60" />
+                <p class="logo-text ms-2 d-none d-sm-block">Planify</p>
               </div>
             </div>
           </a>

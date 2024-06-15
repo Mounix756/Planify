@@ -7,6 +7,7 @@ use App\Http\Controllers\web\errors\Error404Controller;
 use App\Http\Controllers\web\managers\auths\ManagerRegisterController;
 use App\Http\Controllers\web\managers\auths\ManagerLoginController;
 use App\Http\Controllers\web\managers\home\ManagerHomeController;
+use App\Http\Controllers\web\managers\projects\ManagersProjectsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,16 @@ Route::post('/manager/signin-success',[ManagerLoginController::class, 'login'])-
 Route::middleware(['web', 'auth:manager'])->group(function(){
     //PAGE D'ACCUEIL POUR LE MANAGER
     Route::get('/manager/home',[ManagerHomeController::class, 'index'])->name('manager_home');
+
+
+
+
+    //ROUTE QUI CONCERNE LES PROJETS
+    Route::get('/manager/projects/list',[ManagersProjectsController::class, 'index'])->name('manager_project_add_form');
+    Route::get('/manager/1projects/list',[ManagersProjectsController::class, 'list'])->name('manager_project_list');
+    Route::post('/manager/new/project',[ManagersProjectsController::class, 'store'])->name('manager_add_new_project');
+    Route::get('/manager/projects/delete/token={token}',[ManagersProjectsController::class, 'delete'])->name('manager_project_delete');
+
 });
 
 

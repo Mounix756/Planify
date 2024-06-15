@@ -20,11 +20,11 @@
                 <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse" id="nv-home">
                   <li class="collapsed-nav-item-title d-none">Accueils</li>
                   <li class="nav-item"><a class="nav-link active" href="index-2.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Elèves</span></div>
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Mes projets</span></div>
                     </a><!-- more inner pages-->
                   </li>
                   <li class="nav-item"><a class="nav-link" href="dashboard/project-management.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Evenements</span></div>
+                      <div class="d-flex align-items-center"><span class="nav-link-text">Statistiques</span></div>
                     </a><!-- more inner pages-->
                   </li>
                   {{-- <li class="nav-item"><a class="nav-link" href="dashboard/crm.html" data-bs-toggle="" aria-expanded="false">
@@ -197,11 +197,11 @@
               <div class="parent-wrapper label-1">
                 <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-project-management">
                   <li class="collapsed-nav-item-title d-none">Gestions de projets</li>
-                  <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="" aria-expanded="false">
+                  <li class="nav-item"><a class="nav-link" href="{{route('manager_project_add_form')}}" data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Nouveau projet</span></div>
                     </a><!-- more inner pages-->
                   </li>
-                  <li class="nav-item"><a class="nav-link" href="apps/project-management/project-list-view.html" data-bs-toggle="" aria-expanded="false">
+                  <li class="nav-item"><a class="nav-link" href="{{route('manager_project_list')}}" data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Mes projets</span></div>
                     </a><!-- more inner pages-->
                   </li>

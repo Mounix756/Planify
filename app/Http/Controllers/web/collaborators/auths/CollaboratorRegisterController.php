@@ -116,7 +116,7 @@ class CollaboratorRegisterController extends Controller
             // Authentifier l'utilisateur avec le guard admin
             Auth::guard('collaborator')->login($user);
 
-            return redirect()->route('collaborator_signup')->with('success', 'Félicitation ! Votre compte Planify a bien été créé.');
+            return redirect()->route('collaborator_home')->with('success', 'Félicitation ! Votre compte Planify a bien été créé.');
         }
         catch(Exception $e)
         {

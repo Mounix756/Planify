@@ -36,7 +36,7 @@
                 <div class="col mx-auto">
                   <div class="auth-form-box">
                     <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="#">
-                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{{asset('/logo/logo1.jpg')}}" alt="phoenix" width="80" /></div>
+                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{{asset('/logo/logo.png')}}" alt="phoenix" width="80" /></div>
                       </a>
                       <h3 class="text-body-highlight">Connexion</h3>
                       <p class="text-body-tertiary">Veillez renseigner vos identificants</p>

@@ -1,4 +1,4 @@
-@extends('managers.app.appAuth')
+@extends('collaborators.app.appAuth')
 
 @section('title')
 Signup
@@ -36,7 +36,7 @@ Signup
                 <div class="col mx-auto">
                   <div class="auth-form-box">
                     <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="#">
-                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{{asset('/logo/logo.png')}}" alt="phoenix" width="58" /></div>
+                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{{asset('/logo/logo.jpeg')}}" alt="phoenix" width="58" /></div>
                       </a>
                       <h3 class="text-body-highlight">Inscription</h3>
                       <p class="text-body-tertiary">Veillez remplir tous ces champs !</p>
@@ -46,7 +46,7 @@ Signup
                       <hr class="bg-body-secondary" />
                       <div class="divider-content-center bg-body-emphasis">où utiliser mon email</div>
                     </div> --}}
-                    <form action="{{route('manager_signup_success')}}" method="post">
+                    <form action="{{route('collaborator_signup_success')}}" method="post">
                       @csrf
                       @if(session('success'))
                       <div class="alert alert-success" role="alert">
