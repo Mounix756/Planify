@@ -15,12 +15,12 @@
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('/logo/logo1.jpg')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('/logo/logo1.jpg')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/logo/logo1.jpg')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/logo/logo1.jpg')}}">
-    <link rel="manifest" href="{{asset('/logo/logo1.jpg')}}">
-    <meta name="msapplication-TileImage" content="{{asset('/logo/logo1.jpg')}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('/logo/logo.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('/logo/logo.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('/logo/logo.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/logo/logo.png')}}">
+    <link rel="manifest" href="{{asset('/logo/logo.png')}}">
+    <meta name="msapplication-TileImage" content="{{asset('/logo/logo.png')}}">
     <meta name="theme-color" content="#ffffff">
     <script src="/managers/vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="/managers/vendors/simplebar/simplebar.min.js"></script>

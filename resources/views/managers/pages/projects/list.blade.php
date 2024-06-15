@@ -104,7 +104,7 @@
                             <div class="dropdown-menu dropdown-menu-end py-2">
                               <a class="dropdown-item" href="#">Editer le projet</a>
                               <a class="dropdown-item" href="#addTaskBtn" data-bs-toggle="modal" data-product-id="{{$project->id}}">Ajouter des taches</a>
-                              <a class="dropdown-item" href="#">Voir les taches</a>
+                              <a class="dropdown-item" href="{{route('manager_task_view', ['token' => $project->token])}}">Voir les taches</a>
                               <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_project_delete', ['token' => $project->token])}}')">Supprimer</a>
                             </div>
                           </div>

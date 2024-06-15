@@ -31,7 +31,7 @@ Signup
                     </ul> --}}
                   </div>
                   <div class="position-relative z-n1 mb-6 d-none d-md-block text-center mt-md-15">
-                    <img class="auth-title-box-img d-dark-none" src="{{asset('/managers/assets/img/spot-illustrations/auth.png')}}" alt="" /><img class="auth-title-box-img d-light-none" src="{{asset('/managers/assets/img/spot-illustrations/auth-dark.png')}}" alt="" /></div>
+                    <img class="auth-title-box-img d-dark-none" src="{{asset('/logo/logo.png')}}" alt="" /></div>
                 </div>
                 <div class="col mx-auto">
                   <div class="auth-form-box">

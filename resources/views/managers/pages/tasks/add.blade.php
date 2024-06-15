@@ -7,7 +7,7 @@
             </button>
         </div>
           <div class="row mt-8" style="margin: 20px">
-            <form method="post" action="{{route('manager_add_new_project')}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('manager_add_new_task')}}" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <div class="row g-4 pt-50">

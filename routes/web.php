@@ -8,6 +8,7 @@ use App\Http\Controllers\web\managers\auths\ManagerRegisterController;
 use App\Http\Controllers\web\managers\auths\ManagerLoginController;
 use App\Http\Controllers\web\managers\home\ManagerHomeController;
 use App\Http\Controllers\web\managers\projects\ManagersProjectsController;
+use App\Http\Controllers\web\managers\tasks\ManagersTasksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,12 @@ Route::middleware(['web', 'auth:manager'])->group(function(){
     Route::get('/manager/1projects/list',[ManagersProjectsController::class, 'list'])->name('manager_project_list');
     Route::post('/manager/new/project',[ManagersProjectsController::class, 'store'])->name('manager_add_new_project');
     Route::get('/manager/projects/delete/token={token}',[ManagersProjectsController::class, 'delete'])->name('manager_project_delete');
+
+
+    //ROUTE QUI CONCERNE LES TACHES
+    Route::post('/manager/new/project',[ManagersTasksController::class, 'store'])->name('manager_add_new_task');
+    Route::get('/manager/task/delete/token={token}',[ManagersTasksController::class, 'delete'])->name('manager_task_delete');
+    Route::get('/manager/task/view/token={token}',[ManagersTasksController::class, 'view'])->name('manager_task_view');
 
 });
 
