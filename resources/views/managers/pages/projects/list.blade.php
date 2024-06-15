@@ -144,7 +144,7 @@
             @include('managers.pages.tasks.add')
         @endif
 
-    </div>
+</div>
 @endsection
 
 

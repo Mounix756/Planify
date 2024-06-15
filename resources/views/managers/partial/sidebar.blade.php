@@ -234,7 +234,7 @@
               <div class="parent-wrapper label-1">
                 <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-kanban">
                   <li class="collapsed-nav-item-title d-none">Gestion de réunions</li>
-                  <li class="nav-item"><a class="nav-link" href="apps/kanban/kanban.html" data-bs-toggle="" aria-expanded="false">
+                  <li class="nav-item"><a class="nav-link" href="{{route('manager_meets_list')}}" data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Créer une réunion</span></div>
                     </a><!-- more inner pages-->
                   </li>

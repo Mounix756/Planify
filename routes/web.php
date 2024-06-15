@@ -7,6 +7,7 @@ use App\Http\Controllers\web\errors\Error404Controller;
 use App\Http\Controllers\web\managers\auths\ManagerRegisterController;
 use App\Http\Controllers\web\managers\auths\ManagerLoginController;
 use App\Http\Controllers\web\managers\home\ManagerHomeController;
+use App\Http\Controllers\web\managers\meets\ManagerMeetsController;
 use App\Http\Controllers\web\managers\projects\ManagersProjectsController;
 use App\Http\Controllers\web\managers\tasks\ManagersTasksController;
 use Illuminate\Support\Facades\Route;
@@ -51,9 +52,16 @@ Route::middleware(['web', 'auth:manager'])->group(function(){
 
 
     //ROUTE QUI CONCERNE LES TACHES
-    Route::post('/manager/new/project',[ManagersTasksController::class, 'store'])->name('manager_add_new_task');
+    Route::post('/manager/new/task',[ManagersTasksController::class, 'store'])->name('manager_add_new_task');
     Route::get('/manager/task/delete/token={token}',[ManagersTasksController::class, 'delete'])->name('manager_task_delete');
     Route::get('/manager/task/view/token={token}',[ManagersTasksController::class, 'view'])->name('manager_task_view');
+
+
+
+    //ROUTE QUI CONCERNE LES REUNIONS
+    Route::get('/manager/meeting/list',[ManagerMeetsController::class, 'index'])->name('manager_meets_list');
+    Route::post('/manager/new/project',[ManagerMeetsController::class, 'store'])->name('manager_add_new_meet');
+    Route::get('/manager/meet/delete/token={token}',[ManagerMeetsController::class, 'delete'])->name('manager_meet_delete');
 
 });
 
