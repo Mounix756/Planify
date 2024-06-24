@@ -108,6 +108,44 @@ class ManagersProjectsController extends Controller
         }
     }
 
+     //FONCTION PERMETTANT DE METTRE À JOUR UN PROJET EXISTANT
+     public function update(Request $request)
+     {
+         try {
+             // Valider les données entrées par l'utilisateur
+             $validator = Validator::make($request->all(), [
+                 'name' => 'required',
+                 'start_time' => 'required|date',
+                 'end_time' => 'required|date',
+                 'content' => 'required',
+             ]);
+ 
+             //Vérifier si la validation a échoué
+             if ($validator->fails()) {
+                 return redirect()->back()->withErrors($validator)->withInput();
+             }
+ 
+             if ($request->start_time >= $request->end_time) {
+                 return redirect()->back()->with('error', 'La date de début doit être inférieure à la date de fin');
+             }
+ 
+             $id = $request->id;
+
+             // Récupérer le projet existant
+             $project = Project::findOrFail($id);
+             $project->name = $request->name;
+             $project->start_time = $request->start_time;
+             $project->end_time = $request->end_time;
+             $project->content = $request->content;
+ 
+             $project->save();
+ 
+             return redirect()->back()->with('success', "Projet mis à jour !");
+         } catch (Exception $e) {
+             return redirect()->back()->with('error', $e->getMessage());
+         }
+     }
+
 
     //SUPPRESSION D'UN PROJET
     public function delete($token)

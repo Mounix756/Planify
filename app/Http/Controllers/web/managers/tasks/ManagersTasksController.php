@@ -63,7 +63,32 @@ class ManagersTasksController extends Controller
         }
     }
 
+ //ENREGISTRER LES MISE A JOUR
+ public function update(Request $request)
+ {
+    try {
+        // Récupérer l'ID de la tâche à partir de la requête
+        $id = $request->id;
 
+        // Récupérer la tâche existante
+        $task = Task::findOrFail($id);
+
+        // Mettre à jour les attributs de la tâche
+        $task->name = $request->name;
+        $task->start_time = $request->start_time;
+        $task->end_time = $request->end_time;
+        $task->content = $request->content;
+        // Conservez la valeur actuelle de project_id
+        $task->project_id = $task->project_id;
+
+        // Enregistrer les modifications dans la base de données
+        $task->save();
+
+        return redirect()->back()->with('success', "Tâche mise à jour !");
+    } catch (Exception $e) {
+        return redirect()->back()->with('error', $e->getMessage());
+    }
+}
 
     //SUPPRESSION D'UNE TACHE
     public function delete($token)

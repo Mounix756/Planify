@@ -49,18 +49,20 @@ Route::middleware(['web', 'auth:manager'])->group(function(){
     Route::get('/manager/1projects/list',[ManagersProjectsController::class, 'list'])->name('manager_project_list');
     Route::post('/manager/new/project',[ManagersProjectsController::class, 'store'])->name('manager_add_new_project');
     Route::get('/manager/projects/delete/token={token}',[ManagersProjectsController::class, 'delete'])->name('manager_project_delete');
+    Route::post('/manager/update/project',[ManagersProjectsController::class, 'update'])->name('update_project');
 
 
     //ROUTE QUI CONCERNE LES TACHES
     Route::post('/manager/new/task',[ManagersTasksController::class, 'store'])->name('manager_add_new_task');
     Route::get('/manager/task/delete/token={token}',[ManagersTasksController::class, 'delete'])->name('manager_task_delete');
     Route::get('/manager/task/view/token={token}',[ManagersTasksController::class, 'view'])->name('manager_task_view');
+    Route::post('/manager/update/task',[ManagersProjectsController::class, 'update'])->name('update_task');
 
 
 
     //ROUTE QUI CONCERNE LES REUNIONS
     Route::get('/manager/meeting/list',[ManagerMeetsController::class, 'index'])->name('manager_meets_list');
-    Route::post('/manager/new/project',[ManagerMeetsController::class, 'store'])->name('manager_add_new_meet');
+    Route::post('/manager/new/meet',[ManagerMeetsController::class, 'store'])->name('manager_add_new_meet');
     Route::get('/manager/meet/delete/token={token}',[ManagerMeetsController::class, 'delete'])->name('manager_meet_delete');
 
 });

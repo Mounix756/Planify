@@ -64,6 +64,7 @@
                             Ajouter un projet
                         </button>
                     </a>
+                  
                 </div>
               </div>
             </div>
@@ -102,8 +103,12 @@
                           <div class="btn-reveal-trigger position-static">
                             <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
                             <div class="dropdown-menu dropdown-menu-end py-2">
-                              <a class="dropdown-item" href="#">Editer le projet</a>
                               <a class="dropdown-item" href="#addTaskBtn" data-bs-toggle="modal" data-product-id="{{$project->id}}">Ajouter des taches</a>
+                              <a class="dropdown-item" href="#editProjectBtn" data-bs-toggle="modal" data-product-id="{{$project->id}}" 
+                                data-product-name="{{$project->name}}" 
+                                data-product-start-time="{{$project->start_time}}"
+                                data-product-end-time="{{$project->end_time}}"
+                                data-product-content="{{$project->content}}">Editer le projet</a>
                               <a class="dropdown-item" href="{{route('manager_task_view', ['token' => $project->token])}}">Voir les taches</a>
                               <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_project_delete', ['token' => $project->token])}}')">Supprimer</a>
                             </div>
@@ -137,12 +142,10 @@
             </div>
           </div>
         </div>
+            @include('managers.pages.projects.edit')
 
-        @if ($page == 0)
             @include('managers.pages.projects.add')
-        @else
             @include('managers.pages.tasks.add')
-        @endif
 
 </div>
 @endsection
@@ -167,6 +170,34 @@
       });
     });
 </script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const editModal = document.getElementById('editProjectBtn');
+      const productIdInput = editModal.querySelector('input[name="user_id"]');
+      const productNameInput = editModal.querySelector('input[name="name"]');
+      const productStartTimeInput = editModal.querySelector('input[name="start_time"]');
+      const productEndTimeInput = editModal.querySelector('input[name="end_time"]');
+      const productContentTextarea = editModal.querySelector('textarea[name="content"]');
+  
+      editModal.addEventListener('show.bs.modal', function (event) {
+          const button = event.relatedTarget;
+          const productId = button.getAttribute('data-product-id');
+          const productName = button.getAttribute('data-product-name');
+          const productStartTime = button.getAttribute('data-product-start-time');
+          const productEndTime = button.getAttribute('data-product-end-time');
+          const productContent = button.getAttribute('data-product-content');
+  
+          productIdInput.value = productId;
+          productNameInput.value = productName;
+          productStartTimeInput.value = productStartTime;
+          productEndTimeInput.value = productEndTime;
+          productContentTextarea.value = productContent;
+      });
+  });
+  </script>
+  
 
 
 
