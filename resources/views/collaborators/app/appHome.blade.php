@@ -6,14 +6,14 @@
 <head>
 
     {{-- Inclure les balise meta --}}
-    @include('managers.include.meta')
+    @include('collaborators.include.meta')
 
     {{-- Donner la possibilité à chaque classe fille d'avoir son propre titre --}}
     <title>PLANIFY || @yield('title')</title>
 
 
     {{-- Inclure le fichier contenant les liens css --}}
-    @include('managers.include.style')
+    @include('collaborators.include.style')
 
     {{-- Donner la possiblité aux classes filles d'avoir leur propres css --}}
     @yield('css')
@@ -24,15 +24,15 @@
   <body>
     <main class="main" id="top">
       {{-- Inclure le sidebar --}}
-      @include('managers.partial.sidebar')
+      @include('collaborators.partial.sidebar')
 
 
       {{-- Inclure la topbar --}}
-      @include('managers.partial.topbar')
+      @include('collaborators.partial.topbar')
 
 
         {{-- Inclure la bar de recherche --}}
-      @include('managers.partial.search')
+      @include('collaborators.partial.search')
 
 
       {{-- Appel au contenu de la page qui se trouvera dans une classe fille --}}
@@ -42,12 +42,12 @@
     </main>
 
     {{-- Inclure le fichier custumize.blade.php --}}
-    @include('managers.partial.customize')
+    @include('collaborators.partial.customize')
 
-    @include('managers.partial.chat')
+    @include('collaborators.partial.chat')
 
     {{-- Inclure le fichier contenant les chemins des scripts --}}
-    @include('managers.include.script')
+    @include('collaborators.include.script')
     @yield('js')
   </body>
 </html>

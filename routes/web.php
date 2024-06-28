@@ -3,7 +3,9 @@
 use App\Http\Controllers\web\collaborators\auths\CollaboratorLoginController;
 use App\Http\Controllers\web\collaborators\auths\CollaboratorRegisterController;
 use App\Http\Controllers\web\collaborators\home\CollaboratorHomeController;
+use App\Http\Controllers\web\collaborators\taches\TachesCollaboratorController;
 use App\Http\Controllers\web\errors\Error404Controller;
+use App\Http\Controllers\web\managers\assignations\AssignationController;
 use App\Http\Controllers\web\managers\auths\ManagerRegisterController;
 use App\Http\Controllers\web\managers\auths\ManagerLoginController;
 use App\Http\Controllers\web\managers\home\ManagerHomeController;
@@ -59,6 +61,13 @@ Route::middleware(['web', 'auth:manager'])->group(function(){
     Route::post('/manager/update/task',[ManagersProjectsController::class, 'update'])->name('update_task');
 
 
+    //ROUTES QUI CONCERNE LES ASSIGNATIONS
+    Route::post('/manager/new/assign',[AssignationController::class, 'store'])->name('manager_add_new_assign');
+    Route::get('/manager/assign/delete/{token}', [AssignationController::class, 'delete'])->name('manager_assign_delete');
+    Route::post('/manager/update/assign/{id}',[AssignationController::class, 'update'])->name('update_assign');
+    Route::get('/manager/assign/view',[AssignationController::class, 'view'])->name('manager_assign_list');
+
+
 
     //ROUTE QUI CONCERNE LES REUNIONS
     Route::get('/manager/meeting/list',[ManagerMeetsController::class, 'index'])->name('manager_meets_list');
@@ -90,4 +99,5 @@ Route::post('/collaborator/signin-success',[CollaboratorLoginController::class, 
 Route::middleware('collaborator')->group(function(){
     //PAGE D'ACCUEIL POUR LE COLLABORATOR
     Route::get('/collaborator/home',[CollaboratorHomeController::class, 'index'])->name('collaborator_home');
+    Route::get('/collaborator/tasks', [TachesCollaboratorController::class, 'Collaborator_task'])->name('collaborator_tasks')->middleware('auth:collaborator');
 });

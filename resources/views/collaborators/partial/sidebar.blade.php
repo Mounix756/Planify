@@ -197,14 +197,18 @@
               <div class="parent-wrapper label-1">
                 <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-project-management">
                   <li class="collapsed-nav-item-title d-none">Gestions de projets</li>
-                  <li class="nav-item"><a class="nav-link" href="{{route('manager_project_add_form')}}" data-bs-toggle="" aria-expanded="false">
+                  <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Nouveau projet</span></div>
                     </a><!-- more inner pages-->
                   </li>
-                  <li class="nav-item"><a class="nav-link" href="{{route('manager_project_list')}}" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Mes projets</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('collaborator_tasks') }}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-text">Mes taches</span>
+                        </div>
+                    </a>
+                </li>
+                
                   {{-- <li class="nav-item"><a class="nav-link" href="apps/project-management/project-card-view.html" data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Project card view</span></div>
                     </a><!-- more inner pages-->
@@ -234,7 +238,7 @@
               <div class="parent-wrapper label-1">
                 <ul class="nav collapse parent" data-bs-parent="#navbarVerticalCollapse" id="nv-kanban">
                   <li class="collapsed-nav-item-title d-none">Gestion de réunions</li>
-                  <li class="nav-item"><a class="nav-link" href="{{route('manager_meets_list')}}" data-bs-toggle="" aria-expanded="false">
+                  <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center"><span class="nav-link-text">Créer une réunion</span></div>
                     </a><!-- more inner pages-->
                   </li>

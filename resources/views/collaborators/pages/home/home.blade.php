@@ -1,4 +1,4 @@
-@extends('managers.app.appHome')
+@extends('collaborators.app.appHome')
 
 @section('title')
 Accueil

@@ -656,7 +656,7 @@
       @endforeach
     </div>
 
-    {{-- @include('managers.pages.tasks.add') --}}
+    @include('managers.pages.tasks.add')
 
    
     {{-- @include('managers.pages.tasks.edit') --}}
