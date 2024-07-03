@@ -110,13 +110,13 @@ class CollaboratorRegisterController extends Controller
             }
 
             // Activer le compte de l'utilisateur
-            $user->status = true;
+            $user->status = false;
             $user->save();
 
             // Authentifier l'utilisateur avec le guard admin
-            Auth::guard('collaborator')->login($user);
+            //Auth::guard('collaborator')->login($user);
 
-            return redirect()->route('collaborator_home')->with('success', 'Félicitation ! Votre compte Planify a bien été créé.');
+            return redirect()->route('collaborator_signin')->with('success', 'Félicitation ! Votre compte Planify a bien été créé.');
         }
         catch(Exception $e)
         {

@@ -1,7 +1,7 @@
 @extends('managers.app.app', ['title' => 'Projets'])
 
 @section('title')
-    Projets
+    Réunions
 @endsection
 
 @section('css')
@@ -20,7 +20,7 @@
     </nav>
     <div class="row gx-6 gy-3 mb-4 align-items-center">
       <div class="col-auto">
-        <h2 class="mb-0">Réunions prévues<span class="fw-normal text-body-tertiary ms-3">(02)</span></h2>
+        <h2 class="mb-0">Réunions prévues<span class="fw-normal text-body-tertiary ms-3">({{$meets_count}})</span></h2>
       </div>
       <div class="col-auto"><a class="btn btn-primary px-5" href="#addMeetBtn" data-bs-toggle="modal"><span class="fa-solid fa-plus me-2"></span>Créer une réunion</a></div>
     </div>
@@ -28,9 +28,8 @@
       <div class="col-12 col-sm-auto">
         <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>Tous </span><span class="text-body-tertiary fw-semibold">(2)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><span>En cours </span><span class="text-body-tertiary fw-semibold">(5)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><span>En retard</span><span class="text-body-tertiary fw-semibold">(2)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><span>Terminé</span><span class="text-body-tertiary fw-semibold">(4)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><span>Prochaines</span><span class="text-body-tertiary fw-semibold">({{$ongoing_count}})</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><span>Terminé</span><span class="text-body-tertiary fw-semibold">({{$finish_count}})</span></a></li>
         </ul>
       </div>
       <div class="col-12 col-sm-auto">
@@ -67,8 +66,13 @@
           <div class="position-relative h-100 d-flex flex-column justify-content-between">
             <div class="d-flex justify-content-between align-items-center"><span class="badge badge-phoenix fs-10 badge-phoenix-primary" data-bs-theme="light">Bientôt</span>
               <div class="z-2"><button class="btn btn-icon btn-reveal dropdown-toggle dropdown-caret-none transition-none" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-v"></span></button>
-                <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item" href="#!">Voir plus</a><a class="dropdown-item" href="#!">Exporter</a>
-                  <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_meet_delete', ['token' => $meet->token])}}')">Supprimer</a>
+                <div class="dropdown-menu dropdown-menu-end py-2">
+                    <a class="dropdown-item" href="{{route('manager_show_meet', ['token' => $meet->token])}}">Voir plus</a>
+                    <a class="dropdown-item" href="{{route('manager_show_meet', ['token' => $meet->token])}}">Inviter</a>
+                    <a class="dropdown-item" href="#!">Exporter</a>
+                <div class="dropdown-divider">
+              </div>
+              <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_meet_delete', ['token' => $meet->token])}}')">Supprimer</a>
                 </div>
               </div>
             </div>

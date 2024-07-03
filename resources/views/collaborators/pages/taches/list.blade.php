@@ -1,4 +1,4 @@
-@extends('managers.app.app', ['title' => 'Mes taches'])
+@extends('collaborators.app.appHome', ['title' => 'Mes taches'])
 
 @section('title')
     Mes taches
@@ -13,31 +13,25 @@
 <div class="content">
     <nav class="mb-2" aria-label="breadcrumb">
       <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
-        <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
-        <li class="breadcrumb-item active">Default</li>
+        <li class="breadcrumb-item"><a href="{{route('collaborator_home')}}">Accueil</a></li>
+        <li class="breadcrumb-item"><a href="#!">Tâches</a></li>
+        <li class="breadcrumb-item active">Mes taches</li>
       </ol>
     </nav>
     <div class="mb-9">
       <div id="projectSummary" data-list='{"valueNames":["projectName","assigness","start","deadline","task","projectprogress","status","action"],"page":6,"pagination":true}'>
         <div class="row mb-4 gx-6 gy-3 align-items-center">
           <div class="col-auto">
-            <h2 class="mb-0">Projects<span class="fw-normal text-body-tertiary ms-3">(32)</span></h2>
+            <h2 class="mb-0">Mes tâches<span class="fw-normal text-body-tertiary ms-3">(32)</span></h2>
           </div>
-          <a href="#addAssignBtn" data-bs-toggle="modal">
-            <button class="btn btn-primary" id="addProject">
-                <span class="fas fa-plus me-2"></span>
-                Ajouter une assignation
-            </button>
-        </a>        </div>
+        </div>
         <div class="row g-3 justify-content-between align-items-end mb-4">
           <div class="col-12 col-sm-auto">
             <ul class="nav nav-links mx-n2">
-              <li class="nav-item"><a class="nav-link px-2 py-1 active" aria-current="page" href="#"><span>All</span><span class="text-body-tertiary fw-semibold">(32)</span></a></li>
-              <li class="nav-item"><a class="nav-link px-2 py-1" href="#"><span>Ongoing</span><span class="text-body-tertiary fw-semibold">(14)</span></a></li>
-              <li class="nav-item"><a class="nav-link px-2 py-1" href="#"><span>Cancelled</span><span class="text-body-tertiary fw-semibold">(2)</span></a></li>
-              <li class="nav-item"><a class="nav-link px-2 py-1" href="#"><span>Finished</span><span class="text-body-tertiary fw-semibold">(14)</span></a></li>
-              <li class="nav-item"><a class="nav-link px-2 py-1" href="#"><span>Postponed</span><span class="text-body-tertiary fw-semibold">(2)</span></a></li>
+              <li class="nav-item"><a class="nav-link px-2 py-1 active" aria-current="page" href="#"><span>Tous</span><span class="text-body-tertiary fw-semibold">(32)</span></a></li>
+              <li class="nav-item"><a class="nav-link px-2 py-1" href="#"><span>En cours</span><span class="text-body-tertiary fw-semibold">(14)</span></a></li>
+              <li class="nav-item"><a class="nav-link px-2 py-1" href="#"><span>Terminés</span><span class="text-body-tertiary fw-semibold">(2)</span></a></li>
+              <li class="nav-item"><a class="nav-link px-2 py-1" href="#"><span>En retard</span><span class="text-body-tertiary fw-semibold">(14)</span></a></li>
             </ul>
           </div>
           <div class="col-12 col-sm-auto">
@@ -86,28 +80,28 @@
               @foreach ($assignments as $assignment)
               @php
               $numero +=1
-             
+
               @endphp
               <tr class="position-static">
                 <td class="product align-middle ps-4">{{$numero}}</td>
                 <td class="align-middle time white-space-nowrap ps-0 projectName py-4" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ $assignment->projet }}</td>
                 <td class="align-middle time white-space-nowrap ps-0 projectName py-4" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ $assignment->name }}</td>
                 <td class="align-middle time white-space-nowrap ps-0 projectName py-4" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
-                  @if ($assignment->status == -1)
-                  <span class="badge badge-tag me-2 mb-2 bg-danger">Pas commencé</span>
-              @elseif ($assignment->status == 0)
-                  <span class="badge badge-tag me-2 mb-2 bg-warning">Encours</span>
-              @else
-                  <span class="badge badge-tag me-2 mb-2 bg-success">Terminé</span>
-              @endif
-              </td>
+                    @if ($assignment->status == -1)
+                        <span class="badge badge-tag me-2 mb-2 bg-danger">Pas commencé</span>
+                    @elseif ($assignment->status == 0)
+                        <span class="badge badge-tag me-2 mb-2 bg-warning">Encours</span>
+                    @else
+                        <span class="badge badge-tag me-2 mb-2 bg-success">Terminé</span>
+                    @endif
+                </td>
                 <td class="align-middle white-space-nowrap start ps-3 py-4" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ \Carbon\Carbon::parse($assignment->start_time)->format('M j, Y') }}</td>
                 <td class="align-middle white-space-nowrap deadline ps-3 py-4" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ \Carbon\Carbon::parse($assignment->end_time)->format('M j, Y') }}</td>
                 <td class="align-middle white-space-nowrap text-start pe-0 ps-4 btn-reveal-trigger">
                     <div class="btn-reveal-trigger position-static">
                       <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
                       <div class="dropdown-menu dropdown-menu-end py-2">
-                        <a class="dropdown-item" href="#editAssignBtn" data-bs-toggle="modal" data-product-id="">Marquer comme terminer</a>
+                        <a class="dropdown-item" href="{{route('collaborator_mark_tasks', ['token' => $assignment->token])}}">Marquer comme terminer</a>
                         </div>
                     </div>
                   </td>
@@ -126,11 +120,11 @@
         </div>
       </div>
     </div>
-   
+
     {{-- @include('managers.pages.assignations.edit') --}}
 
     {{-- @include('managers.pages.assignations.add') --}}
-   
+
 
   </div>
 
@@ -163,7 +157,7 @@
         const productIdInput = editModal.querySelector('input[name="user_id"]');
         const productNameInput = editModal.querySelector('input[name="name"]');
         const productContentTextarea = editModal.querySelector('input[name="user_name"]');
-    
+
         editModal.addEventListener('show.bs.modal', function (event) {
             const button = event.relatedTarget;
             const productId = button.getAttribute('data-product-id');
@@ -171,7 +165,7 @@
             const productStartTime = button.getAttribute('data-product-start-time');
             const productEndTime = button.getAttribute('data-product-end-time');
             const productContent = button.getAttribute('data-product-content');
-    
+
             productIdInput.value = productId;
             productNameInput.value = productName;
             productStartTimeInput.value = productStartTime;

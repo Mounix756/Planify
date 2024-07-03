@@ -110,13 +110,13 @@ class ManagerRegisterController extends Controller
             }
 
             // Activer le compte de l'utilisateur
-            $user->status = true;
+            $user->status = false;
             $user->save();
 
             // Authentifier l'utilisateur avec le guard admin
-            Auth::guard('manager')->login($user);
+            //Auth::guard('manager')->login($user);
 
-            return redirect()->route('manager_home')->with('success', 'Félicitation ! Votre compte Planify a bien été créé.');
+            return redirect()->route('manager_signin')->with('success', 'Félicitation ! Votre compte Planify a bien été créé.');
         }
         catch(Exception $e)
         {

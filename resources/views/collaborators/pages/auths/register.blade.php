@@ -31,12 +31,12 @@ Signup
                     </ul> --}}
                   </div>
                   <div class="position-relative z-n1 mb-6 d-none d-md-block text-center mt-md-15">
-                    <img class="auth-title-box-img d-dark-none" src="{{asset('/managers/assets/img/spot-illustrations/auth.png')}}" alt="" /><img class="auth-title-box-img d-light-none" src="{{asset('/managers/assets/img/spot-illustrations/auth-dark.png')}}" alt="" /></div>
+                    <img class="auth-title-box-img d-dark-none" src="{{asset('/logo/logo.png')}}" alt="" /><img class="auth-title-box-img d-light-none" src="{{asset('/logo/logo.png')}}" alt="" /></div>
                 </div>
                 <div class="col mx-auto">
                   <div class="auth-form-box">
                     <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="#">
-                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{{asset('/logo/planify1.jpeg')}}" alt="phoenix" width="58" /></div>
+                        <div class="d-flex align-items-center fw-bolder fs-3 d-inline-block"><img src="{{asset('/logo/logo.png')}}" alt="phoenix" width="58" /></div>
                       </a>
                       <h3 class="text-body-highlight">Inscription</h3>
                       <p class="text-body-tertiary">Veillez remplir tous ces champs !</p>

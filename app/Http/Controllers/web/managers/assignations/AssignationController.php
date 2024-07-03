@@ -31,8 +31,10 @@ class AssignationController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
-            foreach ($request->collaborator_id as $collaborator_id) {
-                foreach ($request->task_id as $task_id) {
+            foreach ($request->collaborator_id as $collaborator_id)
+            {
+                foreach ($request->task_id as $task_id)
+                {
                     $assignment = new Assignment();
                     $assignment->user_id = $collaborator_id;
                     $assignment->task_id = $task_id;
@@ -67,13 +69,13 @@ public function update(Request $request, $id)
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        
+
         $assignment = Assignment::findOrFail($id);
-        
-        
+
+
         $assignment->user_id = $request->user_id;
         $assignment->task_id = $request->task_id;
-        
+
         $assignment->save();
 
         return redirect()->back()->with('success', 'Assignation mise à jour avec succès!');

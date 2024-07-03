@@ -76,7 +76,19 @@
           <div class="card-body">
             <div class="d-flex align-items-center">
               <h4 class="mb-2 line-clamp-1 lh-sm flex-1 me-5">{{$task->name}}</h4>
-              <div class="hover-actions top-0 end-0 mt-4 me-4"><button class="btn btn-primary btn-icon flex-shrink-0" data-bs-toggle="modal" data-bs-target="#projectsCardViewModal"><span class="fa-solid fa-chevron-right"></span></button></div>
+              <div class="btn-reveal-trigger position-static">
+                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
+                    <span class="fas fa-ellipsis-h fs-10"></span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end py-2">
+                  <a class="dropdown-item" href="#editTaskBtn" data-bs-toggle="modal" data-product-id="{{$task->id}}"
+                    data-product-name="{{$task->name}}"
+                    data-product-start-time="{{$task->start_time}}"
+                    data-product-end-time="{{$task->end_time}}"
+                    data-product-content="{{$task->content}}">Editer la tache</a>
+                  <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_task_delete', ['token' => $task->token])}}')">Supprimer</a>
+                </div>
+              </div>
             </div>
             <span class="badge badge-phoenix fs-10 mb-4 badge-phoenix-success">Terminé</span>
             {{--<div class="d-flex align-items-center mb-2">
@@ -99,152 +111,6 @@
             <div class="d-flex align-items-center mt-2">
               <p class="mb-0 fw-bold fs-9">Deadline : <span class="fw-semibold text-body-tertiary text-opactity-85 ms-1">{{ \Carbon\Carbon::parse($task->end_time)->format('M j, Y') }}</span></p>
             </div>
-            <div class="d-flex d-lg-block d-xl-flex justify-content-between align-items-center mt-3">
-              <div class="avatar-group"><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m  rounded-circle">
-                    <img class="rounded-circle " src="/managers/assets/img/team/34.webp" alt="" />
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end"><button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2"><img class="rounded-circle border border-light-subtle" src="/managers/assets/img/team/34.webp" alt="" /></div>
-                        <h6 class="text-white">Jean Renoir</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m  rounded-circle">
-                    <img class="rounded-circle " src="/managers/assets/img/team/59.webp" alt="" />
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end"><button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2"><img class="rounded-circle border border-light-subtle" src="/managers/assets/img/team/59.webp" alt="" /></div>
-                        <h6 class="text-white">Katerina Karenin</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m  rounded-circle">
-                    <img class="rounded-circle " src="/managers/assets/img/team/35.webp" alt="" />
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end"><button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2"><img class="rounded-circle border border-light-subtle" src="/managers/assets/img/team/35.webp" alt="" /></div>
-                        <h6 class="text-white">Stanly Drinkwater</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m  rounded-circle">
-                    <img class="rounded-circle " src="/managers/assets/img/team/58.webp" alt="" />
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end"><button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2"><img class="rounded-circle border border-light-subtle" src="/managers/assets/img/team/58.webp" alt="" /></div>
-                        <h6 class="text-white">Igor Borvibson</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div>
-                <div class="avatar avatar-m  rounded-circle">
-                  <div class="avatar-name rounded-circle "><span>+4</span></div>
-                </div>
-              </div>
-              <div class="mt-lg-3 mt-xl-0"> <i class="fa-solid fa-list-check me-1"></i>
-                <p class="d-inline-block fw-bold mb-0">287<span class="fw-normal">	Task</span></p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -257,16 +123,17 @@
             <div class="d-flex align-items-center">
               <h4 class="mb-2 line-clamp-1 lh-sm flex-1 me-5">{{$task->name}}</h4>
               <div class="btn-reveal-trigger position-static">
-                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
+                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
+                    <span class="fas fa-ellipsis-h fs-10"></span>
+                </button>
                 <div class="dropdown-menu dropdown-menu-end py-2">
-                  <a class="dropdown-item" href="#editTaskBtn" data-bs-toggle="modal" data-product-id="{{$task->id}}" 
-                    data-product-name="{{$task->name}}" 
+                  <a class="dropdown-item" href="#editTaskBtn" data-bs-toggle="modal" data-product-id="{{$task->id}}"
+                    data-product-name="{{$task->name}}"
                     data-product-start-time="{{$task->start_time}}"
                     data-product-end-time="{{$task->end_time}}"
                     data-product-content="{{$task->content}}">Editer la tache</a>
-                  <a class="dropdown-item" href="{{route('manager_task_view', ['token' => $task->token])}}">Voir les taches</a>
                   <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_task_delete', ['token' => $task->token])}}')">Supprimer</a>
-              </div>
+                </div>
               </div>
             </div>
             <span class="badge badge-phoenix fs-10 mb-4 badge-phoenix-warning">Pas commencé</span>
@@ -289,82 +156,6 @@
             <div class="d-flex align-items-center mt-2">
               <p class="mb-0 fw-bold fs-9">Deadline : <span class="fw-semibold text-body-tertiary text-opactity-85 ms-1">{{ \Carbon\Carbon::parse($task->start_time)->format('M j, Y') }}</span></p>
             </div>
-            <div class="d-flex d-lg-block d-xl-flex justify-content-between align-items-center mt-3">
-              <div class="avatar-group"><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m  rounded-circle">
-                    <img class="rounded-circle " src="/managers/assets/img/team/1.webp" alt="" />
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end">
-                        <button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2"><img class="rounded-circle border border-light-subtle" src="/managers/assets/img/team/1.webp" alt="" /></div>
-                        <h6 class="text-white">Ricky Antony</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m  rounded-circle">
-                    <img class="rounded-circle " src="/managers/assets/img/team/2.webp" alt="" />
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end"><button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2"><img class="rounded-circle border border-light-subtle" src="/managers/assets/img/team/2.webp" alt="" /></div>
-                        <h6 class="text-white">Raymond Mims</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div>
-              </div>
-              <div class="mt-lg-3 mt-xl-0"> <i class="fa-solid fa-list-check me-1"></i>
-                <p class="d-inline-block fw-bold mb-0">03<span class="fw-normal">Actions</span></p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -376,7 +167,19 @@
           <div class="card-body">
             <div class="d-flex align-items-center">
               <h4 class="mb-2 line-clamp-1 lh-sm flex-1 me-5">Execution of Micky the foul mouse</h4>
-              <div class="hover-actions top-0 end-0 mt-4 me-4"><button class="btn btn-primary btn-icon flex-shrink-0" data-bs-toggle="modal" data-bs-target="#projectsCardViewModal"><span class="fa-solid fa-chevron-right"></span></button></div>
+              <div class="btn-reveal-trigger position-static">
+                <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent">
+                    <span class="fas fa-ellipsis-h fs-10"></span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end py-2">
+                  <a class="dropdown-item" href="#editTaskBtn" data-bs-toggle="modal" data-product-id="{{$task->id}}"
+                    data-product-name="{{$task->name}}"
+                    data-product-start-time="{{$task->start_time}}"
+                    data-product-end-time="{{$task->end_time}}"
+                    data-product-content="{{$task->content}}">Editer la tache</a>
+                  <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_task_delete', ['token' => $task->token])}}')">Supprimer</a>
+                </div>
+              </div>
             </div><span class="badge badge-phoenix fs-10 mb-4 badge-phoenix-primary">ongoing</span>
             <div class="d-flex align-items-center mb-2"><span class="fa-solid fa-user me-2 text-body-tertiary fs-9 fw-extra-bold"></span>
               <p class="fw-bold mb-0 text-truncate lh-1">Client : <span class="fw-semibold text-primary ms-1"> Dashney Peeps Corp.</span></p>
@@ -396,151 +199,6 @@
             </div>
             <div class="d-flex align-items-center mt-2">
               <p class="mb-0 fw-bold fs-9">Deadline : <span class="fw-semibold text-body-tertiary text-opactity-85 ms-1">	23rd Sept. 2026</span></p>
-            </div>
-            <div class="d-flex d-lg-block d-xl-flex justify-content-between align-items-center mt-3">
-              <div class="avatar-group"><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m  rounded-circle">
-                    <img class="rounded-circle " src="/managers/assets/img/team/20.webp" alt="" />
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end"><button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2"><img class="rounded-circle border border-light-subtle" src="/managers/assets/img/team/20.webp" alt="" /></div>
-                        <h6 class="text-white">Emma Watson</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m">
-                    <div class="avatar-name rounded-circle"><span>R</span></div>
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end"><button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2">
-                          <div class="avatar-name rounded-circle"><span>R</span></div>
-                        </div>
-                        <h6 class="text-white">Raymond Mims</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m  rounded-circle">
-                    <img class="rounded-circle " src="/managers/assets/img/team/35.webp" alt="" />
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end"><button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2"><img class="rounded-circle border border-light-subtle" src="/managers/assets/img/team/35.webp" alt="" /></div>
-                        <h6 class="text-white">Stanly Drinkwater</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div><a class="dropdown-toggle dropdown-caret-none d-inline-block" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <div class="avatar avatar-m  rounded-circle">
-                    <img class="rounded-circle " src="/managers/assets/img/team/58.webp" alt="" />
-                  </div>
-                </a>
-                <div class="dropdown-menu avatar-dropdown-menu p-0 overflow-hidden" style="width: 320px;">
-                  <div class="position-relative">
-                    <div class="bg-holder z-n1" style="background-image:url(/managers/assets/img/bg/bg-32.png);background-size: auto;"></div>
-                    <!--/.bg-holder-->
-                    <div class="p-3">
-                      <div class="text-end"><button class="btn p-0 me-2"><span class="fa-solid fa-user-plus text-white"></span></button><button class="btn p-0"><span class="fa-solid fa-ellipsis text-white"></span></button></div>
-                      <div class="text-center">
-                        <div class="avatar avatar-xl status-online position-relative me-2 me-sm-0 me-xl-2 mb-2"><img class="rounded-circle border border-light-subtle" src="/managers/assets/img/team/58.webp" alt="" /></div>
-                        <h6 class="text-white">Igor Borvibson</h6>
-                        <p class="text-light text-opacity-50 fw-semibold fs-10 mb-2">@tyrion222</p>
-                        <div class="d-flex flex-center mb-3">
-                          <h6 class="text-white mb-0">224 <span class="fw-normal text-light text-opacity-75">connections</span></h6><span class="fa-solid fa-circle text-body-tertiary mx-1" data-fa-transform="shrink-10 up-2"></span>
-                          <h6 class="text-white mb-0">23 <span class="fw-normal text-light text-opacity-75">mutual</span></h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bg-body-emphasis">
-                    <div class="p-3 border-bottom border-translucent">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex"><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-phone"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg me-2"><span class="fa-solid fa-message"></span></button><button class="btn btn-phoenix-secondary btn-icon btn-icon-lg"><span class="fa-solid fa-video"></span></button></div><button class="btn btn-phoenix-primary"><span class="fa-solid fa-envelope me-2"></span>Send Email</button>
-                      </div>
-                    </div>
-                    <ul class="nav d-flex flex-column py-3 border-bottom">
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body d-inline-block" data-feather="clipboard"></span><span class="text-body-highlight flex-1">Assigned Projects</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                      <li class="nav-item"><a class="nav-link px-3 d-flex flex-between-center" href="#!"> <span class="me-2 text-body" data-feather="pie-chart"></span><span class="text-body-highlight flex-1">View activiy</span><span class="fa-solid fa-chevron-right fs-11"></span></a></li>
-                    </ul>
-                  </div>
-                  <div class="p-3 d-flex justify-content-between"><a class="btn btn-link p-0 text-decoration-none" href="#!">Details </a><a class="btn btn-link p-0 text-decoration-none text-danger" href="#!">Unassign </a></div>
-                </div>
-              </div>
-              <div class="mt-lg-3 mt-xl-0"> <i class="fa-solid fa-list-check me-1"></i>
-                <p class="d-inline-block fw-bold mb-0">72<span class="fw-normal">	Task</span></p>
-              </div>
             </div>
           </div>
         </div>
@@ -658,9 +316,9 @@
 
     @include('managers.pages.tasks.add')
 
-   
+
     {{-- @include('managers.pages.tasks.edit') --}}
-   
+
 
 
     <div class="modal fade" id="projectsCardViewModal" tabindex="-1" aria-labelledby="projectsCardViewModal" aria-hidden="true">
@@ -1073,7 +731,7 @@
         </div>
       </div>
     </div>
-    
+
     @include('managers.pages.tasks.edit')
     {{-- @include('managers.pages.tasks.add') --}}
 </div>
@@ -1113,7 +771,7 @@
       const productStartTimeInput = editModal.querySelector('input[name="start_time"]');
       const productEndTimeInput = editModal.querySelector('input[name="end_time"]');
       const productContentTextarea = editModal.querySelector('textarea[name="content"]');
-  
+
       editModal.addEventListener('show.bs.modal', function (event) {
           const button = event.relatedTarget;
           const productId = button.getAttribute('data-product-id');
@@ -1121,7 +779,7 @@
           const productStartTime = button.getAttribute('data-product-start-time');
           const productEndTime = button.getAttribute('data-product-end-time');
           const productContent = button.getAttribute('data-product-content');
-  
+
           productIdInput.value = productId;
           productNameInput.value = productName;
           productStartTimeInput.value = productStartTime;

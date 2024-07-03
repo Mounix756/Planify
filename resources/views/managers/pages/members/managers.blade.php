@@ -1,7 +1,7 @@
 @extends('managers.app.app', ['title' => 'Projets'])
 
 @section('title')
-    Projets
+    Utilisateurs
 @endsection
 
 @section('css')
@@ -13,22 +13,16 @@
 <div class="content">
         <nav class="mb-2" aria-label="breadcrumb">
           <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="#!">Gestion de projets</a></li>
-            <li class="breadcrumb-item active">Mes projets</li>
+            <li class="breadcrumb-item"><a href="#!">Gestion des utilisateurs</a></li>
+            <li class="breadcrumb-item active">Utilisateurs</li>
           </ol>
         </nav>
         <div class="mb-9">
           <div class="row g-3 mb-4">
             <div class="col-auto">
-              <h2 class="mb-0">Liste des projets</h2>
+              <h2 class="mb-0">Liste des utilisateurs</h2>
             </div>
           </div>
-          <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>Tous </span><span class="text-body-tertiary fw-semibold">(2)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><span>En cours </span><span class="text-body-tertiary fw-semibold">(5)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><span>En retard</span><span class="text-body-tertiary fw-semibold">(2)</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="#"><span>Terminé</span><span class="text-body-tertiary fw-semibold">(4)</span></a></li>
-          </ul>
           <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
             <div class="mb-4">
               <div class="d-flex flex-wrap gap-3">
@@ -44,12 +38,6 @@
                             Filtre
                             <span class="fas fa-angle-down ms-2"></span>
                         </button>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Non commencés</a></li>
-                        <li><a class="dropdown-item" href="#">Encours</a></li>
-                        <li><a class="dropdown-item" href="#">Terminés</a></li>
-                        <li><a class="dropdown-item" href="#">En retard</a></li>
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -58,13 +46,6 @@
                         <span class="fa-solid fa-file-export fs-9 me-2"></span>
                         Exporter
                     </button>
-                    <a href="#addProjectBtn" data-bs-toggle="modal">
-                        <button class="btn btn-primary" id="addProject">
-                            <span class="fas fa-plus me-2"></span>
-                            Ajouter un projet
-                        </button>
-                    </a>
-
                 </div>
               </div>
             </div>
@@ -74,43 +55,41 @@
                   <thead>
                     <tr>
                       <th class="sort white-space-nowrap align-middle fs-10" scope="col">##</th>
-                      <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">TITRE</th>
-                      <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">DESCRIPTION</th>
-                      <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">DEBUT</th>
-                      <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">FIN</th>
+                      <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">NOM</th>
+                      <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">EMAIL</th>
+                      <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">FONCTION</th>
                       <th class="sort align-middle ps-4" scope="col" data-sort="category">STATUS</th>
                       <th class="sort text-start align-middle pe-0 ps-4" scope="col"></th>
                     </tr>
                   </thead>
                   <tbody class="list" id="products-table-body">
-                    @foreach ($projects as $project)
+                    @foreach ($managers as $manager)
                     <tr class="position-static">
                         <td class="product align-middle ps-4"><a class="fw-semibold line-clamp-3 mb-0" href="#"></a></td>
-                        <td class="product align-middle ps-4"><a class="fw-semibold line-clamp-3 mb-0" href="#">{{$project->name}}</a></td>
-                        <td class="price align-middle white-space-nowrap text-start fw-bold text-body-tertiary ps-4">{!!substr($project ->content, 0, 30)!!}...</td>
-                        <td class="category align-middle white-space-nowrap text-body-quaternary fs-9 ps-4 fw-semibold">{{ \Carbon\Carbon::parse($project->start_time)->format('M j, Y') }}</td>
-                        <td class="category align-middle white-space-nowrap text-body-quaternary fs-9 ps-4 fw-semibold">{{ \Carbon\Carbon::parse($project->end_time)->format('M j, Y') }}</td>
-                        <td class="tags align-middle review pb-2 ps-3">
-                            @if ($project->status == -1)
-                                <span class="badge badge-tag me-2 mb-2 bg-danger">Pas commencé</span>
-                            @elseif ($project->status == 0)
-                                <span class="badge badge-tag me-2 mb-2 bg-warning">Encours</span>
+                        <td class="product align-middle ps-4"><a class="fw-semibold line-clamp-3 mb-0" href="#">{{$manager->name}}</a></td>
+                        <td class="price align-middle white-space-nowrap text-start fw-bold text-body-tertiary ps-4">{{$manager ->email}}</td>
+                        <td class="category align-middle white-space-nowrap text-body-quaternary fs-9 ps-4 fw-semibold">
+                            @if ($manager->fonction == NULL)
+                            <em>Non precisé.</em>
                             @else
-                                <span class="badge badge-tag me-2 mb-2 bg-success">Terminé</span>
+                            {{ $manager->fonction}}
+                            @endif
+                        </td>
+                        <td class="tags align-middle review pb-2 ps-3">
+                            @if ($manager->status == 0)
+                                <span class="badge badge-tag me-2 mb-2 bg-danger">Pas activé</span>
+                            @else
+                                <span class="badge badge-tag me-2 mb-2 bg-success">Activé</span>
                             @endif
                         </td>
                         <td class="align-middle white-space-nowrap text-start pe-0 ps-4 btn-reveal-trigger">
                           <div class="btn-reveal-trigger position-static">
                             <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
                             <div class="dropdown-menu dropdown-menu-end py-2">
-                              <a class="dropdown-item" href="#addTaskBtn" data-bs-toggle="modal" data-product-id="{{$project->id}}">Ajouter des taches</a>
-                              <a class="dropdown-item" href="#editProjectBtn" data-bs-toggle="modal" data-product-id="{{$project->id}}"
-                                data-product-name="{{$project->name}}"
-                                data-product-start-time="{{$project->start_time}}"
-                                data-product-end-time="{{$project->end_time}}"
-                                data-product-content="{{$project->content}}">Editer le projet</a>
-                              <a class="dropdown-item" href="{{route('manager_task_view', ['token' => $project->token])}}">Voir les taches</a>
-                              <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_project_delete', ['token' => $project->token])}}')">Supprimer</a>
+                              @if ($manager->status == 0)
+                                <a class="dropdown-item" href="{{route('manager_account_active', ['token' => $manager->token])}}">Confirmer</a>
+                              @endif
+                              <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_account_delete', ['token' => $manager->token])}}')">Supprimer</a>
                             </div>
                           </div>
                         </td>
@@ -142,13 +121,6 @@
             </div>
           </div>
         </div>
-            {{-- @include('managers.pages.projects.edit') --}}
-
-        @if ($page == 1)
-            @include('managers.pages.tasks.add')
-        @else
-            @include('managers.pages.projects.add')
-        @endif
 </div>
 @endsection
 
