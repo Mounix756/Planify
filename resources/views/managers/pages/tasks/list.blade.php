@@ -317,9 +317,6 @@
     @include('managers.pages.tasks.add')
 
 
-    {{-- @include('managers.pages.tasks.edit') --}}
-
-
 
     <div class="modal fade" id="projectsCardViewModal" tabindex="-1" aria-labelledby="projectsCardViewModal" aria-hidden="true">
       <div class="modal-dialog modal-md">
@@ -732,7 +729,7 @@
       </div>
     </div>
 
-    @include('managers.pages.tasks.edit')
+    {{-- @include('managers.pages.tasks.edit') --}}
     {{-- @include('managers.pages.tasks.add') --}}
 </div>
 

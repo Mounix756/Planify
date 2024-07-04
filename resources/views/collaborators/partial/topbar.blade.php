@@ -2,7 +2,7 @@
     <div class="collapse navbar-collapse justify-content-between">
       <div class="navbar-logo">
         <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-        <a class="navbar-brand me-1 me-sm-3" href="index-2.html">
+        <a class="navbar-brand me-1 me-sm-3" href="{{route('collaborator_home')}}">
           <div class="d-flex align-items-center">
             <div class="d-flex align-items-center"><img src="{{asset('logo/logo.png')}}" alt="Mounix School" width="60" />
               <p class="logo-text ms-2 d-none d-sm-block">Planify</p>
@@ -330,7 +330,7 @@
                   <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-body" data-feather="user-plus"></span>Add another account</a></li>
                 </ul>
                 <hr />
-                <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+                <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="{{route('collaborator_logout')}}"> <span class="me-2" data-feather="log-out"> </span>Deconnexion</a></div>
                 <div class="my-2 text-center fw-bold fs-10 text-body-quaternary"><a class="text-body-quaternary me-1" href="#!">Privacy policy</a>&bull;<a class="text-body-quaternary mx-1" href="#!">Terms</a>&bull;<a class="text-body-quaternary ms-1" href="#!">Cookies</a></div>
               </div>
             </div>
@@ -343,7 +343,7 @@
     <div class="collapse navbar-collapse justify-content-between">
       <div class="navbar-logo">
         <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-        <a class="navbar-brand navbar-brand" href="index-2.html">Mounix School <span class="text-body-highlight d-none d-sm-inline">slim</span></a>
+        <a class="navbar-brand navbar-brand" href="{{route('collaborator_home')}}">Mounix School <span class="text-body-highlight d-none d-sm-inline">slim</span></a>
       </div>
       <ul class="navbar-nav navbar-nav-icons flex-row">
         <li class="nav-item">
@@ -551,7 +551,7 @@
                   <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-body" data-feather="user-plus"></span>Add another account</a></li>
                 </ul>
                 <hr />
-                <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+                <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="{{route('collaborator_logout')}}"> <span class="me-2" data-feather="log-out"> </span>Deconnexion</a></div>
                 <div class="my-2 text-center fw-bold fs-10 text-body-quaternary"><a class="text-body-quaternary me-1" href="#!">Privacy policy</a>&bull;<a class="text-body-quaternary mx-1" href="#!">Terms</a>&bull;<a class="text-body-quaternary ms-1" href="#!">Cookies</a></div>
               </div>
             </div>
@@ -563,7 +563,7 @@
   <nav class="navbar navbar-top fixed-top navbar-expand-lg" id="navbarTop" style="display:none;">
     <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-      <a class="navbar-brand me-1 me-sm-3" href="index-2.html">
+      <a class="navbar-brand me-1 me-sm-3" href="{{route('collaborator_home')}}">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center"><img src="{{asset('logo/logo.png')}}" alt="Mounix School" width="60" />
             <p class="logo-text ms-2 d-none d-sm-block">PLANIFY</p>
@@ -575,7 +575,7 @@
       <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-8 me-2 uil-chart-pie"></span>Home</a>
           <ul class="dropdown-menu navbar-dropdown-caret">
-            <li><a class="dropdown-item active" href="index-2.html">
+            <li><a class="dropdown-item active" href="{{route('collaborator_home')}}">
                 <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
               </a></li>
             <li><a class="dropdown-item" href="dashboard/project-management.html">
@@ -858,8 +858,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/simple/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/simple/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/simple/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -885,8 +885,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/split/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/split/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/split/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -912,8 +912,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/card/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/card/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/card/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -1276,7 +1276,7 @@
                 <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-body" data-feather="user-plus"></span>Add another account</a></li>
               </ul>
               <hr />
-              <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+              <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="{{route('collaborator_logout')}}"> <span class="me-2" data-feather="log-out"> </span>Deconnexion</a></div>
               <div class="my-2 text-center fw-bold fs-10 text-body-quaternary"><a class="text-body-quaternary me-1" href="#!">Privacy policy</a>&bull;<a class="text-body-quaternary mx-1" href="#!">Terms</a>&bull;<a class="text-body-quaternary ms-1" href="#!">Cookies</a></div>
             </div>
           </div>
@@ -1287,14 +1287,14 @@
   <nav class="navbar navbar-top navbar-slim justify-content-between fixed-top navbar-expand-lg" id="navbarTopSlim" style="display:none;">
     <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-      <a class="navbar-brand navbar-brand" href="index-2.html">Planify
+      <a class="navbar-brand navbar-brand" href="{{route('collaborator_home')}}">Planify
         <span class="text-body-highlight d-none d-sm-inline">slim</span></a>
     </div>
     <div class="collapse navbar-collapse navbar-top-collapse order-1 order-lg-0 justify-content-center" id="navbarTopCollapse">
       <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-8 me-2 uil-chart-pie"></span>Home</a>
           <ul class="dropdown-menu navbar-dropdown-caret">
-            <li><a class="dropdown-item active" href="index-2.html">
+            <li><a class="dropdown-item active" href="{{route('collaborator_home')}}">
                 <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
               </a></li>
             <li><a class="dropdown-item" href="dashboard/project-management.html">
@@ -1577,8 +1577,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/simple/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/simple/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/simple/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -1604,8 +1604,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/split/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/split/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/split/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -1631,8 +1631,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/card/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/card/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/card/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -1991,7 +1991,7 @@
                 <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-body" data-feather="user-plus"></span>Add another account</a></li>
               </ul>
               <hr />
-              <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+              <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="{{route('collaborator_logout')}}"> <span class="me-2" data-feather="log-out"> </span>Deconnexion</a></div>
               <div class="my-2 text-center fw-bold fs-10 text-body-quaternary"><a class="text-body-quaternary me-1" href="#!">Privacy policy</a>&bull;<a class="text-body-quaternary mx-1" href="#!">Terms</a>&bull;<a class="text-body-quaternary ms-1" href="#!">Cookies</a></div>
             </div>
           </div>
@@ -2002,7 +2002,7 @@
   <nav class="navbar navbar-top fixed-top navbar-expand-lg" id="navbarCombo" data-navbar-top="combo" data-move-target="#navbarVerticalNav" style="display:none;">
     <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-      <a class="navbar-brand me-1 me-sm-3" href="index-2.html">
+      <a class="navbar-brand me-1 me-sm-3" href="{{route('collaborator_home')}}">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center"><img src="{{asset('logo/logo.png')}}" alt="Mounix School" width="60" />
             <p class="logo-text ms-2 d-none d-sm-block">Planify</p>
@@ -2014,7 +2014,7 @@
       <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-8 me-2 uil-chart-pie"></span>Home</a>
           <ul class="dropdown-menu navbar-dropdown-caret">
-            <li><a class="dropdown-item active" href="index-2.html">
+            <li><a class="dropdown-item active" href="{{route('collaborator_home')}}">
                 <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
               </a></li>
             <li><a class="dropdown-item" href="dashboard/project-management.html">
@@ -2297,8 +2297,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/simple/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/simple/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/simple/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -2324,8 +2324,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/split/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/split/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/split/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -2351,8 +2351,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/card/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/card/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/card/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -2715,7 +2715,7 @@
                 <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-body" data-feather="user-plus"></span>Add another account</a></li>
               </ul>
               <hr />
-              <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+              <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="{{route('collaborator_logout')}}"> <span class="me-2" data-feather="log-out"> </span>Deconnexion</a></div>
               <div class="my-2 text-center fw-bold fs-10 text-body-quaternary"><a class="text-body-quaternary me-1" href="#!">Privacy policy</a>&bull;<a class="text-body-quaternary mx-1" href="#!">Terms</a>&bull;<a class="text-body-quaternary ms-1" href="#!">Cookies</a></div>
             </div>
           </div>
@@ -2726,13 +2726,13 @@
   <nav class="navbar navbar-top fixed-top navbar-slim justify-content-between navbar-expand-lg" id="navbarComboSlim" data-navbar-top="combo" data-move-target="#navbarVerticalNav" style="display:none;">
     <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-      <a class="navbar-brand navbar-brand" href="index-2.html">Planify <span class="text-body-highlight d-none d-sm-inline">slim</span></a>
+      <a class="navbar-brand navbar-brand" href="{{route('collaborator_home')}}">Planify <span class="text-body-highlight d-none d-sm-inline">slim</span></a>
     </div>
     <div class="collapse navbar-collapse navbar-top-collapse order-1 order-lg-0 justify-content-center" id="navbarTopCollapse">
       <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-8 me-2 uil-chart-pie"></span>Home</a>
           <ul class="dropdown-menu navbar-dropdown-caret">
-            <li><a class="dropdown-item active" href="index-2.html">
+            <li><a class="dropdown-item active" href="{{route('collaborator_home')}}">
                 <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
               </a></li>
             <li><a class="dropdown-item" href="dashboard/project-management.html">
@@ -3015,8 +3015,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/simple/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/simple/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/simple/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -3042,8 +3042,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/split/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/split/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/split/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -3069,8 +3069,8 @@
                     <li><a class="dropdown-item" href="pages/authentication/card/sign-up.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                       </a></li>
-                    <li><a class="dropdown-item" href="pages/authentication/card/sign-out.html">
-                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                    <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                        <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                       </a></li>
                     <li><a class="dropdown-item" href="pages/authentication/card/forgot-password.html">
                         <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -3429,7 +3429,7 @@
                 <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-body" data-feather="user-plus"></span>Add another account</a></li>
               </ul>
               <hr />
-              <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+              <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="{{route('collaborator_logout')}}"> <span class="me-2" data-feather="log-out"> </span>Deconnexion</a></div>
               <div class="my-2 text-center fw-bold fs-10 text-body-quaternary"><a class="text-body-quaternary me-1" href="#!">Privacy policy</a>&bull;<a class="text-body-quaternary mx-1" href="#!">Terms</a>&bull;<a class="text-body-quaternary ms-1" href="#!">Cookies</a></div>
             </div>
           </div>
@@ -3442,7 +3442,7 @@
       <div class="d-flex flex-between-center dual-nav-first-layer">
         <div class="navbar-logo">
           <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-          <a class="navbar-brand me-1 me-sm-3" href="index-2.html">
+          <a class="navbar-brand me-1 me-sm-3" href="{{route('collaborator_home')}}">
             <div class="d-flex align-items-center">
               <div class="d-flex align-items-center"><img src="{{asset('logo/logo.png')}}" alt="Mounix School" width="60" />
                 <p class="logo-text ms-2 d-none d-sm-block">Planify</p>
@@ -3770,7 +3770,7 @@
                     <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-body" data-feather="user-plus"></span>Add another account</a></li>
                   </ul>
                   <hr />
-                  <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+                  <div class="px-3"> <a class="btn btn-Mounix School-secondary d-flex flex-center w-100" href="{{route('collaborator_logout')}}"> <span class="me-2" data-feather="log-out"> </span>Deconnexion</a></div>
                   <div class="my-2 text-center fw-bold fs-10 text-body-quaternary"><a class="text-body-quaternary me-1" href="#!">Privacy policy</a>&bull;<a class="text-body-quaternary mx-1" href="#!">Terms</a>&bull;<a class="text-body-quaternary ms-1" href="#!">Cookies</a></div>
                 </div>
               </div>
@@ -3782,7 +3782,7 @@
         <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
           <li class="nav-item dropdown"><a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-8 me-2 uil-chart-pie"></span>Home</a>
             <ul class="dropdown-menu navbar-dropdown-caret">
-              <li><a class="dropdown-item active" href="index-2.html">
+              <li><a class="dropdown-item active" href="{{route('collaborator_home')}}">
                   <div class="dropdown-item-wrapper"><span class="me-2 uil" data-feather="shopping-cart"></span>E commerce</div>
                 </a></li>
               <li><a class="dropdown-item" href="dashboard/project-management.html">
@@ -4065,8 +4065,8 @@
                       <li><a class="dropdown-item" href="pages/authentication/simple/sign-up.html">
                           <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                         </a></li>
-                      <li><a class="dropdown-item" href="pages/authentication/simple/sign-out.html">
-                          <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                      <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                          <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                         </a></li>
                       <li><a class="dropdown-item" href="pages/authentication/simple/forgot-password.html">
                           <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -4092,8 +4092,8 @@
                       <li><a class="dropdown-item" href="pages/authentication/split/sign-up.html">
                           <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                         </a></li>
-                      <li><a class="dropdown-item" href="pages/authentication/split/sign-out.html">
-                          <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                      <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                          <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                         </a></li>
                       <li><a class="dropdown-item" href="pages/authentication/split/forgot-password.html">
                           <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>
@@ -4119,8 +4119,8 @@
                       <li><a class="dropdown-item" href="pages/authentication/card/sign-up.html">
                           <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign up</div>
                         </a></li>
-                      <li><a class="dropdown-item" href="pages/authentication/card/sign-out.html">
-                          <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Sign out</div>
+                      <li><a class="dropdown-item" href="{{route('collaborator_logout')}}">
+                          <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Deconnexion</div>
                         </a></li>
                       <li><a class="dropdown-item" href="pages/authentication/card/forgot-password.html">
                           <div class="dropdown-item-wrapper"><span class="me-2 uil"></span>Forgot password</div>

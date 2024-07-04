@@ -49,6 +49,7 @@ Route::middleware(['web', 'auth:manager'])->group(function(){
     Route::get('/collaborators/list',[MemberController::class, 'collaborator'])->name('collaborator_list');
     Route::get('/manager/list',[MemberController::class, 'manager'])->name('manager_list');
     Route::get('/manager/list/delete/token={token}',[MemberController::class, 'delete'])->name('manager_account_delete');
+    Route::get('/manager/logout',[ManagerLoginController::class, 'logout'])->name('manager_logout');
 
 
 
@@ -60,6 +61,7 @@ Route::middleware(['web', 'auth:manager'])->group(function(){
     Route::post('/manager/new/project',[ManagersProjectsController::class, 'store'])->name('manager_add_new_project');
     Route::get('/manager/projects/delete/token={token}',[ManagersProjectsController::class, 'delete'])->name('manager_project_delete');
     Route::post('/manager/update/project',[ManagersProjectsController::class, 'update'])->name('update_project');
+    Route::get('/manager/projects/edit/token={token}',[ManagersProjectsController::class, 'edit'])->name('manager_project_edit_form');
 
 
     //ROUTE QUI CONCERNE LES TACHES
@@ -110,6 +112,7 @@ Route::post('/collaborator/signin-success',[CollaboratorLoginController::class, 
 Route::middleware('collaborator')->group(function(){
     //PAGE D'ACCUEIL POUR LE COLLABORATOR
     Route::get('/collaborator/home',[CollaboratorHomeController::class, 'index'])->name('collaborator_home');
+    Route::get('/collaborator/logout',[CollaboratorLoginController::class, 'logout'])->name('collaborator_logout');
 
     //PAGES AFFICHANTS SES TACHES
     Route::get('/collaborator/tasks', [TachesCollaboratorController::class, 'Collaborator_task'])->name('collaborator_tasks');

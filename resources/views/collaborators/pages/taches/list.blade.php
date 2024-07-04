@@ -121,9 +121,6 @@
       </div>
     </div>
 
-    {{-- @include('managers.pages.assignations.edit') --}}
-
-    {{-- @include('managers.pages.assignations.add') --}}
 
 
   </div>

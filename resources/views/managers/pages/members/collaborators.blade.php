@@ -54,7 +54,6 @@
                 <table class="table fs-9 mb-0">
                   <thead>
                     <tr>
-                      <th class="sort white-space-nowrap align-middle fs-10" scope="col">##</th>
                       <th class="sort white-space-nowrap align-middle ps-4" scope="col" data-sort="product">NOM</th>
                       <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">EMAIL</th>
                       <th class="sort align-middle text-start ps-4" scope="col" data-sort="price">FONCTION</th>
@@ -85,7 +84,7 @@
                             <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
                             <div class="dropdown-menu dropdown-menu-end py-2">
                               @if ($collaborator->status == 0)
-                                <a class="dropdown-item" href="{{route('manager_account_active', ['token' => $manager->token])}}">Confirmer</a>
+                                <a class="dropdown-item" href="{{route('manager_account_active', ['token' => $collaborator->token])}}">Confirmer</a>
                               @endif
                               <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_account_delete', ['token' => $collaborator->token])}}')">Supprimer</a>
                             </div>

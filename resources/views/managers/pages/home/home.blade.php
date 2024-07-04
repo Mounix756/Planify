@@ -15,7 +15,7 @@ Accueil
       <div class="row g-4">
         <div class="col-12 col-xxl-6">
           <div class="row align-items-center g-4">
-            <img width="100px" src="{{asset('logo/logo.png')}}" alt="">
+            <img width="100px" src="{{asset('/logo/meet.jpg')}}" alt="">
           </div>
         </div>
       </div>

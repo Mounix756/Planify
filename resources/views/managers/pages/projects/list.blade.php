@@ -104,11 +104,7 @@
                             <button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs-10" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span class="fas fa-ellipsis-h fs-10"></span></button>
                             <div class="dropdown-menu dropdown-menu-end py-2">
                               <a class="dropdown-item" href="#addTaskBtn" data-bs-toggle="modal" data-product-id="{{$project->id}}">Ajouter des taches</a>
-                              <a class="dropdown-item" href="#editProjectBtn" data-bs-toggle="modal" data-product-id="{{$project->id}}"
-                                data-product-name="{{$project->name}}"
-                                data-product-start-time="{{$project->start_time}}"
-                                data-product-end-time="{{$project->end_time}}"
-                                data-product-content="{{$project->content}}">Editer le projet</a>
+                              <a class="dropdown-item" href="{{route('manager_project_edit_form', ['token' => $project->token])}}">Editer le projet</a>
                               <a class="dropdown-item" href="{{route('manager_task_view', ['token' => $project->token])}}">Voir les taches</a>
                               <a class="dropdown-item text-danger" href="#!" onclick="confirmDelete('{{ route('manager_project_delete', ['token' => $project->token])}}')">Supprimer</a>
                             </div>

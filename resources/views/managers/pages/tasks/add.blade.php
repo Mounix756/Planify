@@ -52,18 +52,18 @@
 
                             <div class="col-12">
                                 <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputAddress1">Date de debut</label>
-                                <input type="datetime-local" class="form-control" name="start_time">
+                                <input type="datetime-local" class="form-control" name="start_time" required>
                             </div>
 
                             <div class="col-12">
                                 <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputAddress1">Date de debut</label>
-                                <input type="datetime-local" class="form-control" name="end_time">
+                                <input type="datetime-local" class="form-control" name="end_time" required>
                             </div>
 
 
                             <div class="col-12">
                                 <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputAddress1">Description</label>
-                                <textarea id="content" class="form-control" name="content" type="text" placeholder="Description *"></textarea>
+                                <textarea id="content" class="form-control" name="content" type="text" placeholder="Description *" required></textarea>
                             </div>
 
                             <div class="col-lg-12">

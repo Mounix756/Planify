@@ -59,4 +59,26 @@ class ManagerLoginController extends Controller
             return redirect()->back()->with('error', "Oups ! Une erreur s'est produite.". $e->getMessage());
         }
     }
+
+    //DECONNECTER UNE MANAGER
+    public function logout(Request $request)
+    {
+        try {
+            // Déconnexion de l'utilisateur du guard "manager"
+            Auth::guard('manager')->logout();
+
+            // Invalider la session de l'utilisateur
+            $request->session()->invalidate();
+
+            // Régénérer le token CSRF
+            $request->session()->regenerateToken();
+
+            // Rediriger l'utilisateur vers la page de connexion avec un message de succès
+            return redirect()->route('manager_signin');
+        } catch (Exception $e) {
+            // En cas d'erreur, rediriger l'utilisateur avec un message d'erreur
+            return redirect()->back()->with('error', "Oups ! Une erreur s'est produite. " . $e->getMessage());
+        }
+    }
+
 }

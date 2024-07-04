@@ -35,6 +35,15 @@ class ManagersProjectsController extends Controller
     }
 
 
+    //AFFICHER UNE PAGE PERMETTANT L'EDITION D'UN PROJET
+    public function edit($token)
+    {
+        $project = Project::where('token', $token)->first();
+        
+        return view('managers.pages.projects.edit', compact('project'));
+    }
+
+
     //AFFICHER LA LISTE DE PROJETS
     public function list()
     {
@@ -119,16 +128,16 @@ class ManagersProjectsController extends Controller
                  'end_time' => 'required|date',
                  'content' => 'required',
              ]);
- 
+
              //Vérifier si la validation a échoué
              if ($validator->fails()) {
                  return redirect()->back()->withErrors($validator)->withInput();
              }
- 
+
              if ($request->start_time >= $request->end_time) {
                  return redirect()->back()->with('error', 'La date de début doit être inférieure à la date de fin');
              }
- 
+
              $id = $request->id;
 
              // Récupérer le projet existant
@@ -137,9 +146,9 @@ class ManagersProjectsController extends Controller
              $project->start_time = $request->start_time;
              $project->end_time = $request->end_time;
              $project->content = $request->content;
- 
+
              $project->save();
- 
+
              return redirect()->back()->with('success', "Projet mis à jour !");
          } catch (Exception $e) {
              return redirect()->back()->with('error', $e->getMessage());
