@@ -102,7 +102,7 @@ Route::middleware(['web', 'auth:manager'])->group(function(){
 
 
 
-Route::get('/collaborator/signin',[CollaboratorLoginController::class, 'index'])->name('collaborator_signin');
+Route::get('/',[CollaboratorLoginController::class, 'index'])->name('collaborator_signin');
 Route::get('/collaborator/signup',[CollaboratorRegisterController::class, 'index'])->name('collaborator_signup');
 Route::post('/collaborator/signup-success',[CollaboratorRegisterController::class, 'store'])->name('collaborator_signup_success');
 //Route::get('/collaborator/identification={token}', [CollaboratorLoginController::class, 'validateToken'])->name('validate_token');

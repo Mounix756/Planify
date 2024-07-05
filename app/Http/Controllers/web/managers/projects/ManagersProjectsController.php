@@ -4,6 +4,7 @@ namespace App\Http\Controllers\web\managers\projects;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -39,7 +40,7 @@ class ManagersProjectsController extends Controller
     public function edit($token)
     {
         $project = Project::where('token', $token)->first();
-        
+
         return view('managers.pages.projects.edit', compact('project'));
     }
 
@@ -50,6 +51,7 @@ class ManagersProjectsController extends Controller
         //RECUPÉRER TOUS LES PROJETS
         $projects = Project::join('users', 'projects.user_id', '=', 'users.id')
             ->select('projects.*', 'users.name as user_name')
+                ->latest('projects.created_at')
                 ->get();
 
         //RECUPÉRER LE NOMBRE DE PROJETS TERMINÉS
@@ -61,9 +63,12 @@ class ManagersProjectsController extends Controller
         //RECUPÉRER LE NOMBRE DE PROJETS EN ATTENTE
         $is_pending = Project::where('status', -1)->count();
 
+        //RECUPERER LA LISTE DES COLLABORATEURS
+        $collaborators = User::where('status', 1)->get();
+
         $page = 1;
 
-        return view('managers.pages.projects.list', compact('projects', 'is_finish', 'is_ongoing', 'is_pending', 'page'));
+        return view('managers.pages.projects.list', compact('projects', 'is_finish', 'is_ongoing', 'is_pending', 'page', 'collaborators'));
     }
 
 

@@ -16,6 +16,7 @@ class Task extends Model
         'token',
         'content',
         'status',
+        'add_by',
         'user_id',
         'project_id'
     ];

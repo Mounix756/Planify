@@ -19,7 +19,10 @@ return new class extends Migration
             $table->dateTime('end_time')->nullable();
             $table->integer('status')->default(-1);
             $table->longText('content')->nullable();
+            $table->boolean('priority')->default(0);
 
+            $table->unsignedBigInteger('add_by');
+            $table->foreign('add_by')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('project_id');
